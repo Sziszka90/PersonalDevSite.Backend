@@ -1,0 +1,1 @@
+Szilard Ferencz is a backend developer with experience in Azure, .NET, and cloud architectures. Passionate about personal development and building scalable APIs.
