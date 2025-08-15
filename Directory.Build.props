@@ -1,13 +1,13 @@
 <Project>
-  
+
   <PropertyGroup>
     <!-- Enable nullable reference types -->
     <Nullable>enable</Nullable>
-    
+
     <!-- Enable code analysis -->
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>Default</AnalysisMode>
-    
+
     <!-- Language version -->
     <LangVersion>latest</LangVersion>
   </PropertyGroup>

@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "OPENAI_API_KEY": "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",
+    "OPENAI_API_URL": "https://api.openai.com/v1/chat/completions"
+  }
+}

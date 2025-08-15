@@ -5,30 +5,28 @@
 
 set -e
 
-SOLUTION_PATH="PersonalDevSite.sln"
 
-echo "🔍 Running code analysis for PersonalDevSite Functions..."
+PROJECT_PATH="PersonalDevSite.Functions/PersonalDevSite.Functions.csproj"
 
-# Check if solution exists
-if [[ ! -f "$SOLUTION_PATH" ]]; then
-    echo "❌ Solution file not found: $SOLUTION_PATH"
+echo "🔍 Running code analysis for PersonalDevSite.Functions project..."
+
+# Check if project exists
+if [[ ! -f "$PROJECT_PATH" ]]; then
+    echo "❌ Project file not found: $PROJECT_PATH"
     exit 1
 fi
 
 # 1. Restore packages
 echo "📦 Restoring packages..."
-dotnet restore "$SOLUTION_PATH"
+dotnet restore "$PROJECT_PATH"
 
 # 2. Build with analysis enabled
 echo "🔨 Building with code analysis..."
-dotnet build "$SOLUTION_PATH" --no-restore --verbosity normal
-
-# 3. Format check (optional - shows what would be changed)
-echo "🎨 Checking code formatting..."
+dotnet build "$PROJECT_PATH" --no-restore --verbosity normal
 
 # 3. Format check (fail if issues found)
 echo "🎨 Checking code formatting..."
-dotnet format "$SOLUTION_PATH" --verify-no-changes --verbosity normal
+dotnet format "$PROJECT_PATH" --verify-no-changes --verbosity normal
 if [[ $? -ne 0 ]]; then
     echo "❌ Code formatting issues found. Run 'dotnet format' to fix them."
     exit 1
