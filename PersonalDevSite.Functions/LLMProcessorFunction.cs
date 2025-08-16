@@ -73,7 +73,8 @@ public class LLMProcessorFunction
 
     var jsonOptions = new JsonSerializerOptions
     {
-      Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+      Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+      PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
     };
 
     if (responseData.IsSuccess)

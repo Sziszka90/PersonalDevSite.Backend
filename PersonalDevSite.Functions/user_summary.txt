@@ -1,1 +1,84 @@
-Szilárd Ferencz – Software Engineer & Full-Stack Developer I’m a 34-year-old software engineer living in Budapest, Hungary, with my wife. I’m open to relocating to Ireland and excited about opportunities to work on challenging, end-to-end software projects. I have a strong passion for building full-stack applications, combining my expertise in .NET (C#) backend development with modern Angular frontend frameworks. Over the years, I’ve gained hands-on experience designing, implementing, and maintaining complex applications that are both scalable and maintainable. One of my most significant projects is a finance portfolio web application that showcases my full-stack abilities. The application consists of a .NET backend, an Angular frontend, and integrates AI-powered features, including ChatGPT for transaction categorization and insights. I’ve implemented retrieval-augmented generation using a vector database to provide context-aware responses without sending the entire user summary each time. The project is fully deployed on Azure, using containerized services, CI/CD pipelines, API Management, and background jobs, reflecting real-world production practices. This project demonstrates my ability to design architecture, implement business logic, and handle deployment and monitoring end-to-end. Technical Skills & Expertise Backend Development: .NET, C#, REST APIs, Azure Functions, Durable Functions, database integration, asynchronous programming, and service orchestration. Frontend Development: Angular, TypeScript, HTML/CSS, standalone components, state management, and creating reusable, modular UI architecture. Cloud & DevOps: Azure services, containerization (Docker), CI/CD automation with GitHub Actions, API Management, monitoring, and logging. AI & Machine Learning Integration: ChatGPT API, prompt engineering, LLM orchestration, and embedding-based vector search for context-aware responses. I am especially passionate about taking ownership of projects that span the entire development lifecycle. From architecting the backend to designing the frontend and deploying the system on the cloud, I enjoy building end-to-end solutions that are robust, scalable, and maintainable. Beyond software, I enjoy LEGO building, which has been a lifelong hobby. Creating intricate, complex structures mirrors my approach to programming: planning carefully, understanding dependencies, and assembling pieces into a cohesive, functional system. This hobby also reinforces my attention to detail, creativity, and persistence—qualities I bring to software development. I thrive in environments where innovation, collaboration, and continuous learning are encouraged. I’m eager to tackle challenging problems, learn new technologies, and deliver software that makes a real impact. My ultimate goal is to combine my technical expertise, creativity, and practical experience to build meaningful, intelligent applications that solve real-world problems efficiently and elegantly.
+Szilárd Ferencz – Software Engineer & Full-Stack Developer
+
+I’m a 34-year-old software engineer living in Dublin, Ireland, with my wife.
+I'm excited about opportunities to work on challenging, end-to-end software projects.
+I have a strong passion for building full-stack applications,
+combining my expertise in .NET (C#) backend development with modern Angular frontend frameworks.
+Over the years, I’ve gained hands-on experience designing, implementing,
+and maintaining complex applications that are both scalable and maintainable.
+
+One of my most significant projects is a finance portfolio web application
+that showcases my full-stack abilities.
+The application consists of a .NET backend, an Angular frontend, and integrates AI-powered features,
+including ChatGPT for transaction categorization and insights.
+Using RabbitMQ to communicate an async way with LLMProcessor microservice which handles requests towards ChatGpt.
+The project is fully deployed on Azure, using containerized services, CI/CD pipelines (GitHub Actions),
+API Management, and background jobs, reflecting real-world production practices.
+This project demonstrates my ability to design architecture, implement business logic,
+and handle deployment and monitoring end-to-end.
+
+Current website that you see is a personal web site which is written in Angular from scratch,
+using Azure Functions as backend which handles chat requests towards ChatGPT to ask questions about me.
+Frontend is served from GitHub Pages.
+
+Technical Skills & Expertise Backend Development:
+.NET, C#, Python, REST APIs, Azure Functions, database integration, asynchronous programming, RabbitMQ.
+Frontend Development: Angular, TypeScript, HTML/CSS, standalone components, state management with NgRx,
+and creating reusable, modular UI architecture.
+Cloud & DevOps: Azure services, Kubernetes, containerization (Docker), CI/CD automation with GitHub Actions,
+API Management, monitoring, and logging.
+AI & Machine Learning Integration: ChatGPT API, prompt engineering, LLM orchestration, MCP server implementation.
+I am especially passionate about taking ownership of projects that span the entire development lifecycle.
+From architecting the backend to designing the frontend and deploying the system on the cloud,
+I enjoy building end-to-end solutions that are robust, scalable, and maintainable.
+I thrive in environments where innovation, collaboration, and continuous learning are encouraged.
+I’m eager to tackle challenging problems, learn new technologies,
+and deliver software that makes a real impact.
+My ultimate goal is to combine my technical expertise, creativity,
+and practical experience to build meaningful,
+intelligent applications that solve real-world problems efficiently and elegantly.
+CV points:
+2009-2014 University of Pécs, Electrical Engineer BSc
+Learned key concepts in control systems, automation and programming.
+Studied signal processing, electrical machinery, and digital systems.
+Developed problem-solving skills through projects and practical applications.
+2014-2015 Baldwin UV - Slough, UK - Automation (PLC) Engineer
+Transformed and migrated electrical schematics from legacy systems to a modern platform,
+ensuring improved accuracy and efficiency.
+Created Bills of Materials (BOMs) for machine components. Provided after-sales support,
+troubleshooting and optimizing performance.
+Provided ongoing support to the production team.
+2015-2018 Agrometal-Food-Tech Kft., Budapest, HU - Automation (PLC) Engineer
+Implemented machine software from scratch.
+Created circuit diagrams for machine systems.
+Participated in commissioning to ensure proper functionality.
+Provided after-sales support, troubleshooting and optimizing performance.
+2018-2012 Robert Bosch Kft., Budapest HU - Automation (PLC) Engineer
+Implemented control software for industrial machines.
+Commissioned machines, softwares and supported trial production.
+Communicated with customers to understand requirements and ensure satisfaction.
+Managed small projects, overseeing timelines and deliverables.
+Accomplishments: Successfully contributed to the implementation and commissioning of an
+entirely new manufacturing line, ensuring smooth integration and
+operational efficiency.
+2021-Present Robert Bosch Kft. - Budapest, HU - Fullstack Software Engineer
+Developed and maintained full-stack applications using .NET C# and Angular.
+Optimized DevOps workflows with Azure pipelines.
+Implemented comprehensive testing strategies for reliable and scalable solutions.
+Worked closely with cross-functional teams to align on project
+requirements, provided support to colleagues, and contributed to
+delivering innovative and high-quality solutions.
+Accomplishments:
+Successfully refactored legacy code to implement Entity Framework and
+Domain-Driven Design, improving maintainability, scalability, and performance.
+Developed the foundational engineering framework for a software
+solution utilizing configurable steps, greater flexibility and
+scalability in the application’s workflow.
+
+Some words about my current position:
+I work on different software modules which are used in Bosch factories to trace the produced part quality,
+manage materials which are used in product and which are handling packaging of the produced part.
+This higly complex environment stands multiple software modules which run in Kubernetes cluster using
+modern microservice solutions. The whole system is highly scalable.
+Tech stack: .NET 8, Angular 20, RabbitMQ, Oracle DB, Kubernetes, Docker, Cypress, Azure DevOps.
+During my work I'm involved in system design, refinement, documentation, testing, coding, review, mentoring.

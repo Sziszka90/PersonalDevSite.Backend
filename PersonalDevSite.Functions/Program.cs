@@ -1,11 +1,14 @@
-
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PersonalDevSite.Functions.Abstraction;
 using PersonalDevSite.Functions.Clients;
+using PersonalDevSite.Functions.Middleware;
 
 var host = new HostBuilder()
-  .ConfigureFunctionsWorkerDefaults()
+  .ConfigureFunctionsWorkerDefaults(worker =>
+  {
+    worker.UseMiddleware<CustomCorsMiddleware>();
+  })
   .ConfigureServices((context, services) =>
   {
     services.AddHttpClient();
