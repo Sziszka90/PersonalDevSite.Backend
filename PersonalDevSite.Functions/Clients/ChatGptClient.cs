@@ -4,7 +4,8 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using OpenAI.Chat;
-using PersonalDevSite.Functions.Abstraction;
+using PersonalDevSite.Functions.Abstraction.Clients;
+using PersonalDevSite.Functions.Dtos;
 using PersonalDevSite.Functions.Models;
 
 namespace PersonalDevSite.Functions.Clients;
@@ -32,7 +33,7 @@ public class ChatGptClient : IChatGptClient
         new UserChatMessage(conversation.Message)
       };
 
-      var response = await client.CompleteChatAsync(messages);
+      var response = await client.CompleteChatAsync(messages, cancellationToken: cancellationToken);
 
       if (response is null)
       {

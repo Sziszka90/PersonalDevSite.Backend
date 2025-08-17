@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PersonalDevSite.Functions.Abstraction;
+using PersonalDevSite.Functions.Abstraction.Clients;
 using PersonalDevSite.Functions.Clients;
 using PersonalDevSite.Functions.Middleware;
 

@@ -1,4 +1,4 @@
-namespace PersonalDevSite.Functions;
+namespace PersonalDevSite.Functions.Dtos;
 
 public class ConversationDto
 {
