@@ -1,6 +1,6 @@
 Szilárd Ferencz – Software Engineer & Full-Stack Developer
 
-I’m a 34-year-old software engineer living in Dublin, Ireland, with my wife.
+I’m a 35-year-old software engineer living in Budapest, Hungary, with my wife.
 I'm excited about opportunities to work on challenging, end-to-end software projects.
 I have a strong passion for building full-stack applications,
 combining my expertise in .NET (C#) backend development with modern Angular frontend frameworks.

@@ -23,7 +23,7 @@ public class ChatGptClient : IChatGptClient
   {
     try
     {
-      var client = new ChatClient(model: "gpt-4o-mini", apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY"));
+      var client = new ChatClient(model: "gpt-4.1", apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY"));
 
       var messages = new List<ChatMessage>
       {
