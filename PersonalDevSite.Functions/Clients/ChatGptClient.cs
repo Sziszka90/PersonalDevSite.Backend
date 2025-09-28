@@ -50,7 +50,8 @@ public class ChatGptClient : IChatGptClient
           Message = response.Value.Content[0].Text
         },
       };
-    } catch (Exception ex)
+    }
+    catch (Exception ex)
     {
       return new Result<ConversationDto>
       {

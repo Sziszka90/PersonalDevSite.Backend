@@ -27,7 +27,7 @@ public class LLMProcessorFunction
   {
     _logger = executionContext.GetLogger("LLMProcessorFunction");
 
-   var conversationResult = await CreateConversationDto(req);
+    var conversationResult = await CreateConversationDto(req);
 
     if (!conversationResult.IsSuccess)
     {
