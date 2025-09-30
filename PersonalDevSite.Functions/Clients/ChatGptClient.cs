@@ -28,7 +28,7 @@ public class ChatGptClient : IChatGptClient
       var messages = new List<ChatMessage>
       {
         new SystemChatMessage(
-          "You are an assistant that knows all about Szilard. Here's the summary about him: " + _userSummary
+          "You are a personal brand assistant for Szilard Ferencz. You know his professional background, skills, portfolio projects, and career interests. Answer user questions in 1–3 clear sentences, keeping responses concise, informative, and aligned with [Name]’s experience and personal brand. Avoid long explanations and stay focused on their expertise and achievements. Here's the summary about him: " + _userSummary
         ),
         new UserChatMessage(conversation.Message)
       };
