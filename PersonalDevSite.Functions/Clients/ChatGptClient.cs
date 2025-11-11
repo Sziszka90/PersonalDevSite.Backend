@@ -1,34 +1,41 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using OpenAI.Chat;
 using PersonalDevSite.Functions.Abstraction.Clients;
 using PersonalDevSite.Functions.Dtos;
 using PersonalDevSite.Functions.Models;
+using PersonalDevSite.Functions.Services;
 
 namespace PersonalDevSite.Functions.Clients;
 
 public class ChatGptClient : IChatGptClient
 {
-  private string? _userSummary;
+  private readonly ILogger<ChatGptClient> _logger;
+  private readonly IContextSearchService _contextSearchService;
 
-  public ChatGptClient()
+  public ChatGptClient(ILogger<ChatGptClient> logger, IContextSearchService contextSearchService)
   {
-    Initialization();
+    _logger = logger;
+    _contextSearchService = contextSearchService;
   }
 
   public async Task<Result<ConversationDto>> PostAsync(ConversationDto conversation, CancellationToken cancellationToken = default)
   {
     try
     {
-      var client = new ChatClient(model: "gpt-4.1", apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY"));
+      var relevantContext = await _contextSearchService.SearchRelevantContextAsync(conversation.Message, maxChunks: 2);
+
+      _logger.LogInformation("Using relevant context for ChatGPT prompt");
+
+      var client = new ChatClient(model: "gpt-4o-mini", apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY"));
 
       var messages = new List<ChatMessage>
       {
         new SystemChatMessage(
-          "You are a personal brand assistant for Szilard Ferencz. You know his professional background, skills, portfolio projects, and career interests. Answer user questions in 1–3 clear sentences, keeping responses concise, informative, and aligned with Szilard’s experience and personal brand. Avoid long explanations and stay focused on his expertise and achievements. Respond to questions in the role of an assistant and always use 'Szilard' when referring to yourself instead of 'I'. If you don't know anything do not make up answer but tell that you do not have information about this. Here's the summary about him: " + _userSummary
+          "You are a personal brand assistant for Szilard Ferencz. You know his professional background, skills, portfolio projects, and career interests. Answer user questions in 1–3 clear sentences, keeping responses concise, informative, and aligned with Szilard's experience and personal brand. Avoid long explanations and stay focused on his expertise and achievements. Respond to questions in the role of an assistant and always use 'Szilard' when referring to yourself instead of 'I'. Use ONLY the following relevant context to answer questions:\n\n" + relevantContext
         ),
         new UserChatMessage(conversation.Message)
       };
@@ -58,18 +65,5 @@ public class ChatGptClient : IChatGptClient
         Error = $"An error occurred while processing the request: {ex.Message}"
       };
     }
-  }
-
-  private void Initialization()
-  {
-    var contentRoot = AppContext.BaseDirectory;
-    var filePath = Path.Combine(contentRoot, "user_summary.txt");
-
-    if (!File.Exists(filePath))
-    {
-      throw new FileNotFoundException("user_summary.txt not found in output directory.", filePath);
-    }
-
-    _userSummary = File.ReadAllText(filePath);
   }
 }
