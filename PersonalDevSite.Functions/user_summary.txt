@@ -62,13 +62,19 @@ Managed small projects, overseeing timelines and deliverables.
 Accomplishments: Successfully contributed to the implementation and commissioning of an
 entirely new manufacturing line, ensuring smooth integration and
 operational efficiency.
-2021-Present Robert Bosch Kft. - Budapest, HU - Fullstack Software Engineer
+2021-2025 Robert Bosch Kft. - Budapest, HU - Fullstack Software Engineer
 Developed and maintained full-stack applications using .NET C# and Angular.
 Optimized DevOps workflows with Azure pipelines.
 Implemented comprehensive testing strategies for reliable and scalable solutions.
 Worked closely with cross-functional teams to align on project
 requirements, provided support to colleagues, and contributed to
 delivering innovative and high-quality solutions.
+2026-Present Capgemini Hungary Kft. - Budapest, HU - Software Engineer
+I'm working for Morgan Stanley full time via Capgemini.
+Develop company-wide platform used across multiple teams, ensuring scalability, reliability, and maintainability.
+Design and implement reusable .NET libraries to streamline internal development processes.
+Manage deployments using the internal deployment platform and automate CI/CD pipelines with TeamCity.
+Support and guide .NET developer teams, improving code quality and development efficiency.
 
 Accomplishments:
 Successfully refactored legacy code to implement Entity Framework and
