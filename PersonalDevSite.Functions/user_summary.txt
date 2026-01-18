@@ -89,5 +89,5 @@ manage materials which are used in product and which are handling packaging of t
 This higly complex environment stands multiple software modules which run in Kubernetes cluster using
 modern microservice solutions. The whole system is highly scalable.
 
-Tech stack: .NET 8, Angular 20, RabbitMQ, Oracle DB, Kubernetes, Docker, Cypress, Azure DevOps.
+Tech stack: .NET 10, Angular 21, RabbitMQ, Oracle DB, Kubernetes, Docker, Cypress, Azure DevOps.
 During my work I'm involved in system design, refinement, documentation, testing, coding, review, mentoring.
