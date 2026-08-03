@@ -1,5 +1,7 @@
 using System;
 using System.ClientModel;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -73,6 +75,39 @@ public class OpenAIClient : IOpenAIClient
       {
         Error = $"An error occurred while processing the OpenAI request: {ex.Message}"
       };
+    }
+  }
+
+  public async IAsyncEnumerable<string> StreamAsync(
+    ConversationDto conversation,
+    [EnumeratorCancellation] CancellationToken cancellationToken = default)
+  {
+    var relevantContext = await _contextSearchService.SearchRelevantContextAsync(conversation.Message, maxChunks: 2);
+
+    _logger.LogInformation("Using relevant context for streaming OpenAI model prompt");
+
+    var options = new CreateResponseOptions
+    {
+      Model = EnvironmentConfiguration.GetRequired("AZURE_OPENAI_MODEL_NAME"),
+      StreamingEnabled = true,
+      InputItems =
+      {
+        ResponseItem.CreateUserMessageItem(
+          "You are a personal brand assistant who answers questions about Szilard Ferencz. " +
+          "Answer in 1-3 clear sentences, always refer to Szilard in the third person, " +
+          "and use ONLY the following relevant context:\n\n" +
+          relevantContext +
+          "\n\nUser question:\n" + conversation.Message)
+      }
+    };
+
+    await foreach (var update in _modelClient.CreateResponseStreamingAsync(options, cancellationToken))
+    {
+      if (update is StreamingResponseOutputTextDeltaUpdate textUpdate
+        && !string.IsNullOrEmpty(textUpdate.Delta))
+      {
+        yield return textUpdate.Delta;
+      }
     }
   }
 

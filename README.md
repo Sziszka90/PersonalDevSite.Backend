@@ -47,6 +47,50 @@ The indexer expects the configured index to already contain compatible `id`, `co
 
 The model project endpoint is configured as `AZURE_OPENAI_MODEL_ENDPOINT` in `appsettings.json`, with model name `AZURE_OPENAI_MODEL_NAME`. Model requests use the required `AZURE_OPENAI_API_KEY` through the OpenAI Responses API, sourced locally from `local.settings.json` and in production from the `openai-api-key` Key Vault secret.
 
+## Streaming chat responses
+
+The `LLMProcessorFunction` endpoint supports both response formats. Existing clients receive the normal JSON response. Clients that send `Accept: text/event-stream` receive Server-Sent Events (SSE), with each model text delta sent as soon as it is available. The request remains a `POST` because the chat message is sent in the JSON body.
+
+Angular clients should use `fetch` and read the response body as a stream, because the browser `EventSource` API only supports `GET` requests. Each message event contains JSON with a `delta` property, followed by an `event: done` event.
+
+```typescript
+async streamChat(message: string, onDelta: (delta: string) => void): Promise<void> {
+   const response = await fetch('/api/LLMProcessorFunction', {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/json',
+         Accept: 'text/event-stream'
+      },
+      body: JSON.stringify({ message })
+   });
+
+   if (!response.ok || !response.body) {
+      throw new Error(`Chat request failed with status ${response.status}`);
+   }
+
+   const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
+   let buffer = '';
+
+   while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+
+      buffer += value;
+      const events = buffer.split('\n\n');
+      buffer = events.pop() ?? '';
+
+      for (const event of events) {
+         const dataLine = event.split('\n').find(line => line.startsWith('data: '));
+         if (!dataLine) continue;
+
+         const data = dataLine.slice(6);
+         if (data === '[DONE]') return;
+         onDelta(JSON.parse(data).delta);
+      }
+   }
+}
+```
+
 ## Project Structure
 
 - `PersonalDevSite.Functions/` — Azure Functions project

@@ -29,9 +29,12 @@ public class CustomCorsMiddleware : IFunctionsWorkerMiddleware
     var httpResData = context.GetHttpResponseData();
     if (httpResData != null)
     {
-      httpResData.Headers.Add("Access-Control-Allow-Origin", "*");
-      httpResData.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-      httpResData.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+      if (!httpResData.Headers.Contains("Access-Control-Allow-Origin"))
+      {
+        httpResData.Headers.Add("Access-Control-Allow-Origin", "*");
+        httpResData.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        httpResData.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+      }
     }
   }
 }

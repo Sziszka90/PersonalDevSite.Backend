@@ -1,10 +1,4 @@
-﻿using Azure;
-using Azure.AI.OpenAI;
-using Azure.Identity;
-using Azure.Search.Documents;
-using Azure.Search.Documents.Models;
-using OpenAI.Embeddings;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 var settings = LoadSettings();
 var searchEndpoint = GetRequiredSetting("AZURE_SEARCH_ENDPOINT", settings);
