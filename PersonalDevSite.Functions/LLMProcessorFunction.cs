@@ -12,12 +12,12 @@ namespace PersonalDevSite.Functions;
 
 public class LLMProcessorFunction
 {
-  private readonly IChatGptClient _chatGptClient;
+  private readonly IOpenAIClient _openAIClient;
   private ILogger? _logger;
 
-  public LLMProcessorFunction(IChatGptClient chatGptClient)
+  public LLMProcessorFunction(IOpenAIClient openAIClient)
   {
-    _chatGptClient = chatGptClient;
+    _openAIClient = openAIClient;
   }
 
   [Function("LLMProcessorFunction")]
@@ -37,7 +37,7 @@ public class LLMProcessorFunction
 
     var conversation = conversationResult.Data!;
 
-    var responseData = await _chatGptClient.PostAsync(conversation, req.FunctionContext.CancellationToken);
+    var responseData = await _openAIClient.PostAsync(conversation, req.FunctionContext.CancellationToken);
 
     if (responseData.IsSuccess)
     {
@@ -47,13 +47,13 @@ public class LLMProcessorFunction
       }
       else
       {
-        _logger.LogError("ChatGPT response data is null.");
-        return CreateResponse(req, new { error = "ChatGPT response data is null." }, System.Net.HttpStatusCode.InternalServerError);
+        _logger.LogError("OpenAI response data is null.");
+        return CreateResponse(req, new { error = "OpenAI response data is null." }, System.Net.HttpStatusCode.InternalServerError);
       }
     }
     else
     {
-      _logger.LogError($"ChatGPT request failed: {responseData.Error}");
+      _logger.LogError($"OpenAI request failed: {responseData.Error}");
       return CreateResponse(req, new { error = responseData.Error }, System.Net.HttpStatusCode.InternalServerError);
     }
   }
