@@ -91,3 +91,11 @@ modern microservice solutions. The whole system is highly scalable.
 
 Tech stack: .NET 10, Angular 21, RabbitMQ, Oracle DB, Kubernetes, Docker, Cypress, Azure DevOps.
 During my work I'm involved in system design, refinement, documentation, testing, coding, review, mentoring.
+
+How this chat works:
+The chat uses a retrieval-augmented generation (RAG) workflow to answer questions about Szilard using relevant information from this profile.
+When a user sends a question, the Azure Function first creates an embedding for the question using the Azure OpenAI embedding deployment personal-site-embedding.
+Azure AI Search then performs a hybrid search in the personal-site-search-index, combining the question text with vector similarity over the embedded profile content.
+The most relevant content chunks are added to the prompt and sent to the PersonalSiteLunaModel through the Azure OpenAI Responses API.
+The model is instructed to answer in the third person and use only the retrieved profile context.
+The RAG index is refreshed by splitting this summary into chunks, generating an embedding for each chunk, and uploading the documents and vectors to Azure AI Search.

@@ -32,6 +32,8 @@ if (chunks.Count == 0)
 var embeddingClient = CreateEmbeddingClient(openAiEndpoint, embeddingDeployment, settings);
 var searchClient = CreateSearchClient(searchEndpoint, indexName, settings);
 
+await ClearIndexAsync(searchClient);
+
 Console.WriteLine($"Embedding {chunks.Count} chunks for existing index '{indexName}'...");
 
 var documents = new List<SearchDocument>(chunks.Count);
@@ -73,6 +75,33 @@ static SearchClient CreateSearchClient(string endpoint, string indexName, IReadO
   return string.IsNullOrWhiteSpace(apiKey)
     ? new SearchClient(new Uri(endpoint), indexName, new DefaultAzureCredential())
     : new SearchClient(new Uri(endpoint), indexName, new AzureKeyCredential(apiKey));
+}
+
+static async Task ClearIndexAsync(SearchClient searchClient)
+{
+  var options = new SearchOptions
+  {
+    Size = 1000
+  };
+  options.Select.Add("id");
+
+  var results = await searchClient.SearchAsync<SearchDocument>("*", options);
+  var keys = new List<string>();
+
+  await foreach (var result in results.Value.GetResultsAsync())
+  {
+    if (result.Document.TryGetValue("id", out var id) && id is string key && !string.IsNullOrWhiteSpace(key))
+    {
+      keys.Add(key);
+    }
+  }
+
+  foreach (var batchKeys in keys.Chunk(1000))
+  {
+    await searchClient.IndexDocumentsAsync(IndexDocumentsBatch.Delete("id", batchKeys));
+  }
+
+  Console.WriteLine($"Removed {keys.Count} existing documents from the search index.");
 }
 
 static List<string> ChunkContent(string content)
