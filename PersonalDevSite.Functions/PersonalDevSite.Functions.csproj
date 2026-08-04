@@ -20,7 +20,7 @@
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="../PersonalDevSite.RAGIndexer/user_summary.txt" Link="user_summary.txt">
+    <Content Include="../PersonalDevSite.RAGIndexer/aboutme.md" Link="aboutme.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

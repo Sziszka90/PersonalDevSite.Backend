@@ -24,7 +24,7 @@ It provides API endpoints for AI-powered chat (ChatGPT), user summary, and other
 
 ## Azure AI Search indexing
 
-`PersonalDevSite.RAGIndexer` reads `PersonalDevSite.RAGIndexer/user_summary.txt`, creates embeddings with the configured Azure OpenAI embedding deployment, and uploads the chunks to an existing Azure AI Search index.
+`PersonalDevSite.RAGIndexer` reads `PersonalDevSite.RAGIndexer/aboutme.md`, creates embeddings with the configured Azure OpenAI embedding deployment, and uploads the chunks to an existing Azure AI Search index.
 
 The shared non-secret settings are stored in `PersonalDevSite.Functions/appsettings.json` and are copied to the indexer automatically. Local secrets belong in the ignored `PersonalDevSite.RAGIndexer/appsettings.Development.json` file or environment variables.
 
