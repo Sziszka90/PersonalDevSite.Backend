@@ -113,15 +113,15 @@ public class OpenAIClient : IOpenAIClient
   {
     if (string.IsNullOrWhiteSpace(relevantContext))
     {
-      return "You are a personal brand assistant who answers questions about Szilard Ferencz. " +
-        "Answer in 1-3 clear sentences, always refer to Szilard in the third person. " +
-        "No relevant context was found, so answer the user's question using your general knowledge " +
-        "and be transparent if you are unsure.\n\nUser question:\n" + question;
+      return "You are a helpful assistant for Szilard Ferencz. Answer the user's question directly in 1-3 clear sentences. " +
+        "When the question uses he, him, or his, interpret those pronouns as referring to Szilard and answer about him. " +
+        "For clearly unrelated questions, answer normally without mentioning Szilard or framing the answer as a personal assistant response. " +
+        "Use your general knowledge and be transparent if you are unsure.\n\nUser question:\n" + question;
     }
 
-    return "You are a personal brand assistant who answers questions about Szilard Ferencz. " +
-      "Answer in 1-3 clear sentences, always refer to Szilard in the third person, " +
-      "and use ONLY the following relevant context:\n\n" +
+    return "You are a personal brand assistant for Szilard Ferencz. " +
+      "Answer questions about Szilard in 1-3 clear sentences and always refer to him in the third person. " +
+      "Use ONLY the following relevant context:\n\n" +
       relevantContext +
       "\n\nUser question:\n" + question;
   }

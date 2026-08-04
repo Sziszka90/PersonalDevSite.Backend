@@ -9,6 +9,8 @@ namespace PersonalDevSite.Functions.Services;
 
 public class ContextSearchService : IContextSearchService
 {
+  private const double MINIMUM_RELEVANCE_SCORE = 0.5;
+
   private readonly ILogger<ContextSearchService> _logger;
   private readonly EmbeddingClient _embeddingClient;
   private readonly SearchClient _searchClient;
@@ -48,10 +50,15 @@ public class ContextSearchService : IContextSearchService
     };
     options.Select.Add("content");
 
-    var results = await _searchClient.SearchAsync<SearchDocument>(query, options);
+    var results = await _searchClient.SearchAsync<SearchDocument>(null, options);
     var chunks = new List<string>();
     await foreach (var result in results.Value.GetResultsAsync())
     {
+      if (result.Score is null || result.Score < MINIMUM_RELEVANCE_SCORE)
+      {
+        continue;
+      }
+
       if (result.Document.TryGetValue("content", out var content) && !string.IsNullOrWhiteSpace(content?.ToString()))
       {
         chunks.Add(content.ToString()!);
