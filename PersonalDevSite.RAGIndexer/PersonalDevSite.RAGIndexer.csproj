@@ -11,7 +11,7 @@
     <Content Include="../PersonalDevSite.Functions/appsettings.json" Link="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="user_summary.txt">
+    <Content Include="aboutme.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="appsettings.Development.json">

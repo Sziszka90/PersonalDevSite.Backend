@@ -1,4 +1,10 @@
 ﻿using System.Text.Json;
+using Azure;
+using Azure.AI.OpenAI;
+using Azure.Identity;
+using Azure.Search.Documents;
+using Azure.Search.Documents.Models;
+using OpenAI.Embeddings;
 
 var settings = LoadSettings();
 var searchEndpoint = GetRequiredSetting("AZURE_SEARCH_ENDPOINT", settings);
@@ -8,7 +14,7 @@ var indexName = GetRequiredSetting("AZURE_SEARCH_INDEX_NAME", settings);
 
 var summaryPath = args.Length > 0
   ? Path.GetFullPath(args[0])
-  : Path.Combine(AppContext.BaseDirectory, "user_summary.txt");
+  : Path.Combine(AppContext.BaseDirectory, "aboutme.md");
 
 if (!File.Exists(summaryPath))
 {
@@ -84,10 +90,12 @@ static async Task ClearIndexAsync(SearchClient searchClient)
 
   await foreach (var result in results.Value.GetResultsAsync())
   {
-    if (result.Document.TryGetValue("id", out var id) && id is string key && !string.IsNullOrWhiteSpace(key))
+    if (!result.Document.TryGetValue("id", out var id) || id is not string key || string.IsNullOrWhiteSpace(key))
     {
-      keys.Add(key);
+      continue;
     }
+
+    keys.Add(key);
   }
 
   foreach (var batchKeys in keys.Chunk(1000))
