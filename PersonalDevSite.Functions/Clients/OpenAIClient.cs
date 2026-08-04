@@ -35,19 +35,18 @@ public class OpenAIClient : IOpenAIClient
     {
       var relevantContext = await _contextSearchService.SearchRelevantContextAsync(conversation.Message, maxChunks: 2);
 
-      _logger.LogInformation("Using relevant context for OpenAI model prompt");
+      var prompt = CreatePrompt(conversation.Message, relevantContext);
+      _logger.LogInformation(
+        string.IsNullOrWhiteSpace(relevantContext)
+          ? "No relevant context found; forwarding the full question to the OpenAI model"
+          : "Using relevant context for OpenAI model prompt");
 
       var options = new CreateResponseOptions
       {
         Model = EnvironmentConfiguration.GetRequired("AZURE_OPENAI_MODEL_NAME"),
         InputItems =
         {
-          ResponseItem.CreateUserMessageItem(
-            "You are a personal brand assistant who answers questions about Szilard Ferencz. " +
-            "Answer in 1-3 clear sentences, always refer to Szilard in the third person, " +
-            "and use ONLY the following relevant context:\n\n" +
-            relevantContext +
-            "\n\nUser question:\n" + conversation.Message)
+          ResponseItem.CreateUserMessageItem(prompt)
         }
       };
 
@@ -84,7 +83,11 @@ public class OpenAIClient : IOpenAIClient
   {
     var relevantContext = await _contextSearchService.SearchRelevantContextAsync(conversation.Message, maxChunks: 2);
 
-    _logger.LogInformation("Using relevant context for streaming OpenAI model prompt");
+    var prompt = CreatePrompt(conversation.Message, relevantContext);
+    _logger.LogInformation(
+      string.IsNullOrWhiteSpace(relevantContext)
+        ? "No relevant context found; forwarding the full question to the OpenAI model"
+        : "Using relevant context for streaming OpenAI model prompt");
 
     var options = new CreateResponseOptions
     {
@@ -92,12 +95,7 @@ public class OpenAIClient : IOpenAIClient
       StreamingEnabled = true,
       InputItems =
       {
-        ResponseItem.CreateUserMessageItem(
-          "You are a personal brand assistant who answers questions about Szilard Ferencz. " +
-          "Answer in 1-3 clear sentences, always refer to Szilard in the third person, " +
-          "and use ONLY the following relevant context:\n\n" +
-          relevantContext +
-          "\n\nUser question:\n" + conversation.Message)
+        ResponseItem.CreateUserMessageItem(prompt)
       }
     };
 
@@ -109,6 +107,23 @@ public class OpenAIClient : IOpenAIClient
         yield return textUpdate.Delta;
       }
     }
+  }
+
+  private static string CreatePrompt(string question, string relevantContext)
+  {
+    if (string.IsNullOrWhiteSpace(relevantContext))
+    {
+      return "You are a personal brand assistant who answers questions about Szilard Ferencz. " +
+        "Answer in 1-3 clear sentences, always refer to Szilard in the third person. " +
+        "No relevant context was found, so answer the user's question using your general knowledge " +
+        "and be transparent if you are unsure.\n\nUser question:\n" + question;
+    }
+
+    return "You are a personal brand assistant who answers questions about Szilard Ferencz. " +
+      "Answer in 1-3 clear sentences, always refer to Szilard in the third person, " +
+      "and use ONLY the following relevant context:\n\n" +
+      relevantContext +
+      "\n\nUser question:\n" + question;
   }
 
   private static ResponsesClient CreateModelClient()

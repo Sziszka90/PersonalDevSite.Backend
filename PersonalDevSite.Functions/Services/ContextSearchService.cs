@@ -60,8 +60,8 @@ public class ContextSearchService : IContextSearchService
 
     if (chunks.Count == 0)
     {
-      _logger.LogInformation("No relevant chunks found, returning full summary");
-      return "No information found";
+      _logger.LogInformation("No relevant chunks found");
+      return string.Empty;
     }
 
     _logger.LogInformation("Found {ChunkCount} relevant chunks in Azure AI Search", chunks.Count);
