@@ -6,16 +6,16 @@ He has experience designing and developing backend services, frontend applicatio
 
 His main technical focus areas include:
 
-* .NET backend development
-* Angular frontend development
-* Cloud-native application development
-* Microservices architecture
-* Distributed systems
-* DevOps automation
-* AI-powered applications
-* Software architecture
-* Clean Architecture
-* Domain-Driven Design
+- .NET backend development
+- Angular frontend development
+- Cloud-native application development
+- Microservices architecture
+- Distributed systems
+- DevOps automation
+- AI-powered applications
+- Software architecture
+- Clean Architecture
+- Domain-Driven Design
 
 He enjoys working across the complete software lifecycle, including architecture design, implementation, testing, deployment, monitoring, and continuous improvement.
 
@@ -23,34 +23,43 @@ He enjoys working across the complete software lifecycle, including architecture
 
 # Professional Experience
 
-## Software Engineer – Morgan Stanley (via Capgemini)
+## Software Engineer – Capgemini Hungary Kft. / Morgan Stanley
+
+Jan 2026 – Present
+
+Budapest, Hungary
 
 Szilárd works as a Software Engineer supporting Morgan Stanley's internal technology platforms.
 
-He develops and maintains firm-wide developer platforms and reusable .NET components used by multiple teams.
+He develops and maintains a company-wide platform used across multiple teams, with a focus on scalability, reliability, and maintainability.
 
 Responsibilities:
 
-* Designing and implementing reusable .NET libraries
-* Developing internal tooling and shared components
-* Supporting application modernization from legacy .NET Framework 4.8 solutions to modern .NET
-* Improving developer productivity through reusable frameworks and automation
-* Maintaining CI/CD workflows using TeamCity, Jenkins, and GitHub Actions
-* Supporting .NET development teams through technical guidance and code quality improvements
-* Participating in software design discussions and architectural decisions
-* Developing and maintaining internal applications used across the organization
+- Developing a company-wide platform used across multiple teams
+- Designing and implementing reusable .NET libraries to streamline internal development processes
+- Managing deployments using the internal deployment platform
+- Automating CI/CD pipelines with TeamCity
+- Supporting and guiding .NET developer teams
+- Improving code quality and development efficiency
+- Developing internal tooling and shared components
+- Supporting application modernization from legacy .NET Framework 4.8 solutions to modern .NET
+- Improving developer productivity through reusable frameworks and automation
+- Maintaining CI/CD workflows using TeamCity, Jenkins, and GitHub Actions
+- Supporting .NET development teams through technical guidance and code quality improvements
+- Participating in software design discussions and architectural decisions
+- Developing and maintaining internal applications used across the organization
 
 Technologies:
 
-* C#
-* .NET Framework 4.8
-* Modern .NET
-* WPF
-* WebView2
-* FDC3
-* TeamCity
-* Jenkins
-* GitHub Actions
+- C#
+- .NET Framework 4.8
+- Modern .NET
+- WPF
+- WebView2
+- FDC3
+- TeamCity
+- Jenkins
+- GitHub Actions
 
 ---
 
@@ -62,70 +71,70 @@ The systems consist of multiple distributed services running in containerized en
 
 The applications support:
 
-* Production traceability
-* Material management
-* Packaging workflows
-* Manufacturing process support
+- Production traceability
+- Material management
+- Packaging workflows
+- Manufacturing process support
 
 Responsibilities:
 
 ### Backend Development
 
-* Developed scalable .NET Web APIs using Clean Architecture principles
-* Designed microservices-based solutions
-* Implemented asynchronous communication using RabbitMQ
-* Applied Domain-Driven Design patterns
-* Improved database performance using Entity Framework Core, LINQ, and Oracle Database
-* Developed REST APIs and backend services
+- Developed scalable .NET Web APIs using Clean Architecture principles
+- Designed microservices-based solutions
+- Implemented asynchronous communication using RabbitMQ
+- Applied Domain-Driven Design patterns
+- Improved database performance using Entity Framework Core, LINQ, and Oracle Database
+- Developed REST APIs and backend services
 
 ### Frontend Development
 
-* Developed Angular applications using modern Angular features
-* Created reusable standalone components
-* Used Angular Signals, NgRx, and RxJS
-* Built responsive user interfaces from Figma designs
-* Collaborated with UX designers to deliver maintainable UI solutions
+- Developed Angular applications using modern Angular features
+- Created reusable standalone components
+- Used Angular Signals, NgRx, and RxJS
+- Built responsive user interfaces from Figma designs
+- Collaborated with UX designers to deliver maintainable UI solutions
 
 ### Cloud and DevOps
 
-* Containerized applications using Docker
-* Deployed workloads to Kubernetes and K3S environments
-* Managed Helm-based deployments
-* Automated CI/CD pipelines using Azure DevOps
-* Improved deployment reliability and development workflows
+- Containerized applications using Docker
+- Deployed workloads to Kubernetes and K3S environments
+- Managed Helm-based deployments
+- Automated CI/CD pipelines using Azure DevOps
+- Improved deployment reliability and development workflows
 
 ### Testing
 
 Experience with:
 
-* Unit testing
-* Integration testing
-* End-to-end testing
-* API testing
-* Load testing
+- Unit testing
+- Integration testing
+- End-to-end testing
+- API testing
+- Load testing
 
 Technologies:
 
-* .NET
-* C#
-* Angular
-* Oracle Database
-* RabbitMQ
-* Kubernetes
-* K3S
-* Docker
-* Helm
-* Azure DevOps
-* Cypress
-* Postman
-* Entity Framework Core
+- .NET
+- C#
+- Angular
+- Oracle Database
+- RabbitMQ
+- Kubernetes
+- K3S
+- Docker
+- Helm
+- Azure DevOps
+- Cypress
+- Postman
+- Entity Framework Core
 
 Key achievements:
 
-* Refactored legacy systems using Entity Framework Core and Domain-Driven Design.
-* Developed configurable frameworks improving flexibility and maintainability.
-* Improved software delivery processes through CI/CD optimization.
-* Supported migration towards scalable microservice-based architectures.
+- Refactored legacy systems using Entity Framework Core and Domain-Driven Design.
+- Developed configurable frameworks improving flexibility and maintainability.
+- Improved software delivery processes through CI/CD optimization.
+- Supported migration towards scalable microservice-based architectures.
 
 ---
 
@@ -137,16 +146,16 @@ Before becoming a software engineer, Szilárd worked as an automation engineer d
 
 Responsibilities:
 
-* PLC programming
-* Machine commissioning
-* Production support
-* Customer communication
-* Project coordination
-* Troubleshooting industrial systems
+- PLC programming
+- Machine commissioning
+- Production support
+- Customer communication
+- Project coordination
+- Troubleshooting industrial systems
 
 Key achievement:
 
-* Contributed to the implementation and commissioning of a new manufacturing line.
+- Contributed to the implementation and commissioning of a new manufacturing line.
 
 ---
 
@@ -154,10 +163,10 @@ Key achievement:
 
 Responsibilities:
 
-* Developed machine control software from scratch
-* Created electrical schematics for machine systems
-* Participated in machine commissioning
-* Provided troubleshooting and after-sales support
+- Developed machine control software from scratch
+- Created electrical schematics for machine systems
+- Participated in machine commissioning
+- Provided troubleshooting and after-sales support
 
 ---
 
@@ -165,10 +174,10 @@ Responsibilities:
 
 Responsibilities:
 
-* Worked with control systems, automation, and programming concepts
-* Transformed electrical schematics from legacy systems to modern platforms
-* Created Bills of Materials (BOMs)
-* Supported production and troubleshooting activities
+- Worked with control systems, automation, and programming concepts
+- Transformed electrical schematics from legacy systems to modern platforms
+- Created Bills of Materials (BOMs)
+- Supported production and troubleshooting activities
 
 ---
 
@@ -180,31 +189,31 @@ Szilárd created a full-stack finance portfolio application demonstrating modern
 
 Architecture:
 
-* Angular frontend
-* .NET backend
-* Azure services
-* RabbitMQ messaging
-* Azure OpenAI integration
-* Containerized deployment
+- Angular frontend
+- .NET backend
+- Azure services
+- RabbitMQ messaging
+- Azure OpenAI integration
+- Containerized deployment
 
 Features:
 
-* User management
-* Transaction management
-* CSV import
-* Background processing
-* Exchange rate synchronization
-* AI-powered transaction categorization
-* Automated deployments
+- User management
+- Transaction management
+- CSV import
+- Background processing
+- Exchange rate synchronization
+- AI-powered transaction categorization
+- Automated deployments
 
 The project demonstrates experience with:
 
-* Full-stack development
-* Microservices architecture
-* Cloud deployment
-* CI/CD pipelines
-* AI integration
-* Production-oriented software design
+- Full-stack development
+- Microservices architecture
+- Cloud deployment
+- CI/CD pipelines
+- AI integration
+- Production-oriented software design
 
 ---
 
@@ -216,12 +225,12 @@ The website includes an AI assistant that answers questions about his profession
 
 Architecture:
 
-* Angular frontend
-* Azure Functions backend
-* Azure OpenAI Responses API
-* Azure AI Search
-* Vector embeddings
-* Retrieval-Augmented Generation (RAG)
+- Angular frontend
+- Azure Functions backend
+- Azure OpenAI Responses API
+- Azure AI Search
+- Vector embeddings
+- Retrieval-Augmented Generation (RAG)
 
 The chatbot workflow:
 
@@ -241,15 +250,15 @@ Szilárd has practical experience integrating AI capabilities into software appl
 
 AI technologies and concepts:
 
-* Azure OpenAI
-* Azure AI Search
-* Retrieval-Augmented Generation (RAG)
-* Embedding models
-* Vector search
-* Hybrid search
-* Prompt engineering
-* Streaming AI responses
-* LLM-powered application workflows
+- Azure OpenAI
+- Azure AI Search
+- Retrieval-Augmented Generation (RAG)
+- Embedding models
+- Vector search
+- Hybrid search
+- Prompt engineering
+- Streaming AI responses
+- LLM-powered application workflows
 
 ---
 
@@ -257,25 +266,25 @@ AI technologies and concepts:
 
 Szilárd has experience designing and implementing:
 
-* Full-stack applications
-* REST APIs
-* Microservices architectures
-* Event-driven systems
-* Distributed applications
-* Cloud-native applications
-* Containerized deployments
-* CI/CD pipelines
-* Scalable software solutions
+- Full-stack applications
+- REST APIs
+- Microservices architectures
+- Event-driven systems
+- Distributed applications
+- Cloud-native applications
+- Containerized deployments
+- CI/CD pipelines
+- Scalable software solutions
 
 Software engineering practices:
 
-* Clean Architecture
-* Domain-Driven Design
-* SOLID principles
-* Automated testing
-* Code reviews
-* Documentation
-* Continuous improvement
+- Clean Architecture
+- Domain-Driven Design
+- SOLID principles
+- Automated testing
+- Code reviews
+- Documentation
+- Continuous improvement
 
 ---
 
@@ -283,58 +292,58 @@ Software engineering practices:
 
 ## Programming Languages
 
-* C#
-* TypeScript
-* JavaScript
-* HTML
-* CSS / SCSS
+- C#
+- TypeScript
+- JavaScript
+- HTML
+- CSS / SCSS
 
 ## Backend Technologies
 
-* .NET
-* ASP.NET Core
-* REST APIs
-* Entity Framework Core
-* RabbitMQ
-* Background Services
+- .NET
+- ASP.NET Core
+- REST APIs
+- Entity Framework Core
+- RabbitMQ
+- Background Services
 
 ## Frontend Technologies
 
-* Angular
-* Angular Signals
-* NgRx
-* RxJS
-* Angular Material
+- Angular
+- Angular Signals
+- NgRx
+- RxJS
+- Angular Material
 
 ## Databases
 
-* Oracle Database
-* Microsoft SQL Server
-* Redis
+- Oracle Database
+- Microsoft SQL Server
+- Redis
 
 ## Cloud and DevOps
 
-* Microsoft Azure
-* Azure Functions
-* Azure AI Search
-* Azure OpenAI
-* Azure Container Apps
-* Azure API Management
-* Azure Key Vault
-* Azure DevOps
-* GitHub Actions
-* Docker
-* Kubernetes
-* K3S
-* Helm
+- Microsoft Azure
+- Azure Functions
+- Azure AI Search
+- Azure OpenAI
+- Azure Container Apps
+- Azure API Management
+- Azure Key Vault
+- Azure DevOps
+- GitHub Actions
+- Docker
+- Kubernetes
+- K3S
+- Helm
 
 ## Testing
 
-* xUnit
-* NUnit
-* Cypress
-* Postman
-* Locust
+- xUnit
+- NUnit
+- Cypress
+- Postman
+- Locust
 
 ---
 
@@ -350,8 +359,8 @@ Bachelor of Science in Electrical Engineering
 
 # Languages
 
-* Hungarian: Native
-* English: Professional working proficiency
+- Hungarian: Native
+- English: Professional working proficiency
 
 ---
 
@@ -361,10 +370,10 @@ Szilárd is interested in building modern software solutions using .NET, Angular
 
 His main interests are:
 
-* Cloud-native development
-* Software architecture
-* Distributed systems
-* Full-stack development
-* DevOps automation
-* Artificial intelligence integration
-* Scalable and maintainable software design
+- Cloud-native development
+- Software architecture
+- Distributed systems
+- Full-stack development
+- DevOps automation
+- Artificial intelligence integration
+- Scalable and maintainable software design
