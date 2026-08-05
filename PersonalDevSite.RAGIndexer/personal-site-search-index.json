@@ -1,5 +1,5 @@
 {
-  "@odata.etag": "\"0x8DEF0DA3A8D2988\"",
+  "@odata.etag": "\"0x8DEF331092C522C\"",
   "name": "personal-site-search-index",
   "purviewEnabled": false,
   "fields": [
@@ -52,6 +52,23 @@
   "charFilters": [],
   "similarity": {
     "@odata.type": "#Microsoft.Azure.Search.BM25Similarity"
+  },
+  "semantic": {
+    "configurations": [
+      {
+        "name": "personal-site-search-semantic",
+        "flightingOptIn": false,
+        "rankingOrder": "BoostedRerankerScore",
+        "prioritizedFields": {
+          "prioritizedContentFields": [
+            {
+              "fieldName": "content"
+            }
+          ],
+          "prioritizedKeywordsFields": []
+        }
+      }
+    ]
   },
   "vectorSearch": {
     "algorithms": [

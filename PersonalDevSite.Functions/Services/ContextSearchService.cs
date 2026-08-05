@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Search.Documents;
@@ -9,7 +10,8 @@ namespace PersonalDevSite.Functions.Services;
 
 public class ContextSearchService : IContextSearchService
 {
-  private const double MINIMUM_RELEVANCE_SCORE = 0.5;
+  private const int MINIMUM_CANDIDATE_COUNT = 10;
+  private const int CANDIDATE_MULTIPLIER = 4;
 
   private readonly ILogger<ContextSearchService> _logger;
   private readonly EmbeddingClient _embeddingClient;
@@ -30,19 +32,28 @@ public class ContextSearchService : IContextSearchService
     if (string.IsNullOrWhiteSpace(query))
     {
       _logger.LogWarning("Empty query provided to context search");
+      return string.Empty;
     }
+
+    maxChunks = Math.Max(1, maxChunks);
+    var candidateCount = Math.Max(maxChunks * CANDIDATE_MULTIPLIER, MINIMUM_CANDIDATE_COUNT);
 
     _logger.LogInformation("Generating embedding for user query");
     var embeddingResponse = await _embeddingClient.GenerateEmbeddingAsync(query);
     var vectorQuery = new VectorizedQuery(embeddingResponse.Value.ToFloats().ToArray())
     {
-      KNearestNeighborsCount = maxChunks,
+      KNearestNeighborsCount = candidateCount,
       Fields = { "embedding" }
     };
 
     var options = new SearchOptions
     {
-      Size = maxChunks,
+      Size = candidateCount,
+      QueryType = SearchQueryType.Semantic,
+      SemanticSearch = new SemanticSearchOptions
+      {
+        SemanticConfigurationName = "personal-site-search-semantic"
+      },
       VectorSearch = new VectorSearchOptions
       {
         Queries = { vectorQuery }
@@ -50,18 +61,18 @@ public class ContextSearchService : IContextSearchService
     };
     options.Select.Add("content");
 
-    var results = await _searchClient.SearchAsync<SearchDocument>(null, options);
+    var results = await _searchClient.SearchAsync<SearchDocument>(query, options);
     var chunks = new List<string>();
     await foreach (var result in results.Value.GetResultsAsync())
     {
-      if (result.Score is null || result.Score < MINIMUM_RELEVANCE_SCORE)
-      {
-        continue;
-      }
-
       if (result.Document.TryGetValue("content", out var content) && !string.IsNullOrWhiteSpace(content?.ToString()))
       {
         chunks.Add(content.ToString()!);
+
+        if (chunks.Count == maxChunks)
+        {
+          break;
+        }
       }
     }
 

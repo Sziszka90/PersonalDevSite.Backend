@@ -31,6 +31,11 @@ internal static class EnvironmentConfiguration
       : value;
   }
 
+  public static string? GetOptional(string settingName)
+  {
+    return GetSetting(settingName);
+  }
+
   public static string GetRequiredSecret(string localSettingName)
   {
     if (IsLocalDevelopment())
