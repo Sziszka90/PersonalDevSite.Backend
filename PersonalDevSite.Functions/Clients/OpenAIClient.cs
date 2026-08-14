@@ -20,6 +20,10 @@ namespace PersonalDevSite.Functions.Clients;
 public class OpenAIClient : IOpenAIClient
 {
   private const string NO_KNOWLEDGE_BASE_ANSWER = "I don't have information about that in my knowledge base.";
+  private const string USER_IDENTITY_BOUNDARY =
+    "The knowledge base describes the site owner, Szilard Ferencz, and the current user is a separate person. " +
+    "Do not infer the user's identity or personal attributes from the knowledge base. " +
+    "Only use conversation history to answer questions about the user; if the history does not establish the answer, say that you do not know.\n\n";
 
   private readonly ILogger<OpenAIClient> _logger;
   private readonly IContextSearchService _contextSearchService;
@@ -170,7 +174,8 @@ public class OpenAIClient : IOpenAIClient
 
   private static string CreatePrompt(string question, string relevantContext, string history)
   {
-    return "You are a personal brand assistant for Szilard Ferencz. " +
+    return USER_IDENTITY_BOUNDARY +
+      "You are a personal brand assistant for Szilard Ferencz. " +
       "Answer ONLY when the answer is supported by the knowledge-base context below. " +
       "Do not use general knowledge, assumptions, or information outside the context. " +
       "If the context does not contain enough information to answer the question, respond exactly with: \"" +
@@ -184,7 +189,8 @@ public class OpenAIClient : IOpenAIClient
 
   private static string CreateGeneralKnowledgePrompt(string question, string history)
   {
-    return "You are a helpful assistant for Szilard Ferencz. Answer the user's question directly in 1-3 clear sentences. " +
+    return USER_IDENTITY_BOUNDARY +
+      "You are a helpful assistant for Szilard Ferencz. Answer the user's question directly in 1-3 clear sentences. " +
       "Use your general knowledge. When the question uses he, him, or his, interpret those pronouns as referring to Szilard and answer about him. " +
       "For questions about Szilard, only state facts you can support confidently; otherwise say you are unsure.\n\n" +
       history +
