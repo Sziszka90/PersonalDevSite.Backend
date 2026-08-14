@@ -6,16 +6,16 @@ He has experience designing and developing backend services, frontend applicatio
 
 His main technical focus areas include:
 
-* .NET backend development
-* Angular frontend development
-* Cloud-native application development
-* Microservices architecture
-* Distributed systems
-* DevOps automation
-* AI-powered applications
-* Software architecture
-* Clean Architecture
-* Domain-Driven Design
+- .NET backend development
+- Angular frontend development
+- Cloud-native application development
+- Microservices architecture
+- Distributed systems
+- DevOps automation
+- AI-powered applications
+- Software architecture
+- Clean Architecture
+- Domain-Driven Design
 
 He enjoys working across the complete software lifecycle, including architecture design, implementation, testing, deployment, monitoring, and continuous improvement.
 
@@ -51,21 +51,21 @@ One of Szilárd's strongest characteristics is his interest in the entire softwa
 
 He is comfortable moving between:
 
-* Understanding a business or technical problem
-* Designing software architecture
-* Building backend services
-* Building frontend applications
-* Designing APIs
-* Working with databases
-* Implementing asynchronous communication
-* Working with distributed systems
-* Containerizing applications
-* Working with cloud infrastructure
-* Building CI/CD pipelines
-* Deploying applications
-* Troubleshooting production issues
-* Improving reliability and maintainability
-* Improving developer workflows
+- Understanding a business or technical problem
+- Designing software architecture
+- Building backend services
+- Building frontend applications
+- Designing APIs
+- Working with databases
+- Implementing asynchronous communication
+- Working with distributed systems
+- Containerizing applications
+- Working with cloud infrastructure
+- Building CI/CD pipelines
+- Deploying applications
+- Troubleshooting production issues
+- Improving reliability and maintainability
+- Improving developer workflows
 
 When implementing a feature, he does not think only about the code required to make it work.
 
@@ -83,16 +83,16 @@ He is particularly motivated when he can take ownership of a problem and improve
 
 This can include:
 
-* Investigating the root cause of problems instead of applying superficial workarounds
-* Improving existing architecture
-* Reducing unnecessary technical debt
-* Automating repetitive processes
-* Improving developer workflows
-* Creating reusable components and frameworks
-* Improving CI/CD processes
-* Learning new technologies when they are useful for solving a problem
-* Thinking about deployment and operational concerns early
-* Improving maintainability and developer experience
+- Investigating the root cause of problems instead of applying superficial workarounds
+- Improving existing architecture
+- Reducing unnecessary technical debt
+- Automating repetitive processes
+- Improving developer workflows
+- Creating reusable components and frameworks
+- Improving CI/CD processes
+- Learning new technologies when they are useful for solving a problem
+- Thinking about deployment and operational concerns early
+- Improving maintainability and developer experience
 
 He is not motivated only by completing assigned tickets. He enjoys improving the system around the work as well.
 
@@ -102,16 +102,16 @@ Szilárd enjoys working on the product as a whole.
 
 He is interested not only in whether code works, but also in questions such as:
 
-* Is the architecture appropriate for the problem?
-* Is the solution unnecessarily complicated?
-* Is the application maintainable?
-* Is the user experience sensible?
-* Can the system scale?
-* Can developers work efficiently with it?
-* Can it be deployed reliably?
-* Can problems be diagnosed in production?
-* Can repetitive processes be automated?
-* Can the overall product be improved?
+- Is the architecture appropriate for the problem?
+- Is the solution unnecessarily complicated?
+- Is the application maintainable?
+- Is the user experience sensible?
+- Can the system scale?
+- Can developers work efficiently with it?
+- Can it be deployed reliably?
+- Can problems be diagnosed in production?
+- Can repetitive processes be automated?
+- Can the overall product be improved?
 
 He prefers environments where engineers have meaningful ownership of a product rather than being responsible for only a small isolated part of a system.
 
@@ -157,15 +157,15 @@ This background gave him experience with systems where reliability, troubleshoot
 
 He later transitioned into enterprise software development and progressively expanded his responsibilities across:
 
-* Backend development
-* Frontend development
-* Distributed systems
-* Microservices
-* Cloud infrastructure
-* Kubernetes
-* DevOps
-* Software architecture
-* AI integration
+- Backend development
+- Frontend development
+- Distributed systems
+- Microservices
+- Cloud infrastructure
+- Kubernetes
+- DevOps
+- Software architecture
+- AI integration
 
 This background contributes to a practical engineering mindset.
 
@@ -179,20 +179,20 @@ He frequently learns technologies by applying them to real projects rather than 
 
 His personal projects have allowed him to explore areas such as:
 
-* Modern .NET
-* Modern Angular
-* Azure
-* Cloud-native architecture
-* Kubernetes
-* Docker
-* CI/CD
-* Distributed systems
-* Messaging
-* AI integration
-* Retrieval-Augmented Generation
-* Vector search
-* Azure OpenAI
-* Azure AI Search
+- Modern .NET
+- Modern Angular
+- Azure
+- Cloud-native architecture
+- Kubernetes
+- Docker
+- CI/CD
+- Distributed systems
+- Messaging
+- AI integration
+- Retrieval-Augmented Generation
+- Vector search
+- Azure OpenAI
+- Azure AI Search
 
 He believes that building real systems is one of the most effective ways to understand a technology.
 
@@ -204,15 +204,15 @@ Szilárd is interested in software architecture and long-term maintainability.
 
 He has experience applying:
 
-* Clean Architecture
-* Domain-Driven Design
-* SOLID principles
-* Microservice architecture
-* Event-driven architecture
-* REST API design
-* Automated testing
-* CI/CD
-* Containerization
+- Clean Architecture
+- Domain-Driven Design
+- SOLID principles
+- Microservice architecture
+- Event-driven architecture
+- REST API design
+- Automated testing
+- CI/CD
+- Containerization
 
 He tries to avoid unnecessary complexity while still designing systems that can evolve as requirements change.
 
@@ -224,15 +224,15 @@ Szilárd is interested in how AI can be integrated into real software systems ra
 
 He has practical experience building AI-powered applications using:
 
-* Azure OpenAI
-* Azure AI Search
-* Embeddings
-* Vector search
-* Hybrid search
-* Retrieval-Augmented Generation
-* Prompt engineering
-* Streaming responses
-* LLM-powered application workflows
+- Azure OpenAI
+- Azure AI Search
+- Embeddings
+- Vector search
+- Hybrid search
+- Retrieval-Augmented Generation
+- Prompt engineering
+- Streaming responses
+- LLM-powered application workflows
 
 His personal AI website is an example of this approach: AI is integrated into a real application architecture with Angular, Azure Functions, Azure AI Search, vector embeddings, and Azure OpenAI.
 
@@ -254,31 +254,31 @@ He develops and maintains a company-wide platform used across multiple teams, wi
 
 Responsibilities:
 
-* Developing a company-wide platform used across multiple teams
-* Designing and implementing reusable .NET libraries to streamline internal development processes
-* Managing deployments using the internal deployment platform
-* Automating CI/CD pipelines with TeamCity
-* Supporting and guiding .NET developer teams
-* Improving code quality and development efficiency
-* Developing internal tooling and shared components
-* Supporting application modernization from legacy .NET Framework 4.8 solutions to modern .NET
-* Improving developer productivity through reusable frameworks and automation
-* Maintaining CI/CD workflows using TeamCity, Jenkins, and GitHub Actions
-* Supporting .NET development teams through technical guidance and code quality improvements
-* Participating in software design discussions and architectural decisions
-* Developing and maintaining internal applications used across the organization
+- Developing a company-wide platform used across multiple teams
+- Designing and implementing reusable .NET libraries to streamline internal development processes
+- Managing deployments using the internal deployment platform
+- Automating CI/CD pipelines with TeamCity
+- Supporting and guiding .NET developer teams
+- Improving code quality and development efficiency
+- Developing internal tooling and shared components
+- Supporting application modernization from legacy .NET Framework 4.8 solutions to modern .NET
+- Improving developer productivity through reusable frameworks and automation
+- Maintaining CI/CD workflows using TeamCity, Jenkins, and GitHub Actions
+- Supporting .NET development teams through technical guidance and code quality improvements
+- Participating in software design discussions and architectural decisions
+- Developing and maintaining internal applications used across the organization
 
 Technologies:
 
-* C#
-* .NET Framework 4.8
-* Modern .NET
-* WPF
-* WebView2
-* FDC3
-* TeamCity
-* Jenkins
-* GitHub Actions
+- C#
+- .NET Framework 4.8
+- Modern .NET
+- WPF
+- WebView2
+- FDC3
+- TeamCity
+- Jenkins
+- GitHub Actions
 
 ---
 
@@ -290,68 +290,68 @@ The systems consist of multiple distributed services running in containerized en
 
 The applications support:
 
-* Production traceability
-* Material management
-* Packaging workflows
-* Manufacturing process support
+- Production traceability
+- Material management
+- Packaging workflows
+- Manufacturing process support
 
 ### Backend Development
 
-* Developed scalable .NET Web APIs using Clean Architecture principles
-* Designed microservices-based solutions
-* Implemented asynchronous communication using RabbitMQ
-* Applied Domain-Driven Design patterns
-* Improved database performance using Entity Framework Core, LINQ, and Oracle Database
-* Developed REST APIs and backend services
+- Developed scalable .NET Web APIs using Clean Architecture principles
+- Designed microservices-based solutions
+- Implemented asynchronous communication using RabbitMQ
+- Applied Domain-Driven Design patterns
+- Improved database performance using Entity Framework Core, LINQ, and Oracle Database
+- Developed REST APIs and backend services
 
 ### Frontend Development
 
-* Developed Angular applications using modern Angular features
-* Created reusable standalone components
-* Used Angular Signals, NgRx, and RxJS
-* Built responsive user interfaces from Figma designs
-* Collaborated with UX designers to deliver maintainable UI solutions
+- Developed Angular applications using modern Angular features
+- Created reusable standalone components
+- Used Angular Signals, NgRx, and RxJS
+- Built responsive user interfaces from Figma designs
+- Collaborated with UX designers to deliver maintainable UI solutions
 
 ### Cloud and DevOps
 
-* Containerized applications using Docker
-* Deployed workloads to Kubernetes and K3S environments
-* Managed Helm-based deployments
-* Automated CI/CD pipelines using Azure DevOps
-* Improved deployment reliability and development workflows
+- Containerized applications using Docker
+- Deployed workloads to Kubernetes and K3S environments
+- Managed Helm-based deployments
+- Automated CI/CD pipelines using Azure DevOps
+- Improved deployment reliability and development workflows
 
 ### Testing
 
 Experience with:
 
-* Unit testing
-* Integration testing
-* End-to-end testing
-* API testing
-* Load testing
+- Unit testing
+- Integration testing
+- End-to-end testing
+- API testing
+- Load testing
 
 Technologies:
 
-* .NET
-* C#
-* Angular
-* Oracle Database
-* RabbitMQ
-* Kubernetes
-* K3S
-* Docker
-* Helm
-* Azure DevOps
-* Cypress
-* Postman
-* Entity Framework Core
+- .NET
+- C#
+- Angular
+- Oracle Database
+- RabbitMQ
+- Kubernetes
+- K3S
+- Docker
+- Helm
+- Azure DevOps
+- Cypress
+- Postman
+- Entity Framework Core
 
 ### Key Achievements
 
-* Refactored legacy systems using Entity Framework Core and Domain-Driven Design
-* Developed configurable frameworks improving flexibility and maintainability
-* Improved software delivery processes through CI/CD optimization
-* Supported migration towards scalable microservice-based architectures
+- Refactored legacy systems using Entity Framework Core and Domain-Driven Design
+- Developed configurable frameworks improving flexibility and maintainability
+- Improved software delivery processes through CI/CD optimization
+- Supported migration towards scalable microservice-based architectures
 
 ---
 
@@ -363,16 +363,16 @@ Before becoming a software engineer, Szilárd worked as an automation engineer d
 
 Responsibilities:
 
-* PLC programming
-* Machine commissioning
-* Production support
-* Customer communication
-* Project coordination
-* Troubleshooting industrial systems
+- PLC programming
+- Machine commissioning
+- Production support
+- Customer communication
+- Project coordination
+- Troubleshooting industrial systems
 
 Key achievement:
 
-* Contributed to the implementation and commissioning of a new manufacturing line
+- Contributed to the implementation and commissioning of a new manufacturing line
 
 ---
 
@@ -380,10 +380,10 @@ Key achievement:
 
 Responsibilities:
 
-* Developed machine control software from scratch
-* Created electrical schematics for machine systems
-* Participated in machine commissioning
-* Provided troubleshooting and after-sales support
+- Developed machine control software from scratch
+- Created electrical schematics for machine systems
+- Participated in machine commissioning
+- Provided troubleshooting and after-sales support
 
 ---
 
@@ -391,10 +391,10 @@ Responsibilities:
 
 Responsibilities:
 
-* Worked with control systems, automation, and programming concepts
-* Transformed electrical schematics from legacy systems to modern platforms
-* Created Bills of Materials (BOMs)
-* Supported production and troubleshooting activities
+- Worked with control systems, automation, and programming concepts
+- Transformed electrical schematics from legacy systems to modern platforms
+- Created Bills of Materials (BOMs)
+- Supported production and troubleshooting activities
 
 ---
 
@@ -406,31 +406,31 @@ Szilárd created a full-stack finance portfolio application demonstrating modern
 
 Architecture:
 
-* Angular frontend
-* .NET backend
-* Azure services
-* RabbitMQ messaging
-* Azure OpenAI integration
-* Containerized deployment
+- Angular frontend
+- .NET backend
+- Azure services
+- RabbitMQ messaging
+- Azure OpenAI integration
+- Containerized deployment
 
 Features:
 
-* User management
-* Transaction management
-* CSV import
-* Background processing
-* Exchange rate synchronization
-* AI-powered transaction categorization
-* Automated deployments
+- User management
+- Transaction management
+- CSV import
+- Background processing
+- Exchange rate synchronization
+- AI-powered transaction categorization
+- Automated deployments
 
 The project demonstrates experience with:
 
-* Full-stack development
-* Microservices architecture
-* Cloud deployment
-* CI/CD pipelines
-* AI integration
-* Production-oriented software design
+- Full-stack development
+- Microservices architecture
+- Cloud deployment
+- CI/CD pipelines
+- AI integration
+- Production-oriented software design
 
 ---
 
@@ -442,12 +442,12 @@ The website includes an AI assistant that answers questions about his profession
 
 Architecture:
 
-* Angular frontend
-* Azure Functions backend
-* Azure OpenAI Responses API
-* Azure AI Search
-* Vector embeddings
-* Retrieval-Augmented Generation (RAG)
+- Angular frontend
+- Azure Functions backend
+- Azure OpenAI Responses API
+- Azure AI Search
+- Vector embeddings
+- Retrieval-Augmented Generation (RAG)
 
 The chatbot workflow:
 
@@ -469,17 +469,17 @@ Szilárd has practical experience integrating AI capabilities into software appl
 
 AI technologies and concepts:
 
-* Azure OpenAI
-* Azure AI Search
-* Retrieval-Augmented Generation (RAG)
-* Embedding models
-* Vector search
-* Hybrid search
-* Prompt engineering
-* Streaming AI responses
-* LLM-powered application workflows
-* Conversational AI
-* Context management
+- Azure OpenAI
+- Azure AI Search
+- Retrieval-Augmented Generation (RAG)
+- Embedding models
+- Vector search
+- Hybrid search
+- Prompt engineering
+- Streaming AI responses
+- LLM-powered application workflows
+- Conversational AI
+- Context management
 
 He is particularly interested in the engineering side of AI applications, including how LLMs can be integrated with existing backend systems, how relevant information can be retrieved, and how applications can maintain useful conversational context.
 
@@ -489,27 +489,27 @@ He is particularly interested in the engineering side of AI applications, includ
 
 Szilárd has experience designing and implementing:
 
-* Full-stack applications
-* REST APIs
-* Microservices architectures
-* Event-driven systems
-* Distributed applications
-* Cloud-native applications
-* Containerized deployments
-* CI/CD pipelines
-* Scalable software solutions
-* AI-powered applications
+- Full-stack applications
+- REST APIs
+- Microservices architectures
+- Event-driven systems
+- Distributed applications
+- Cloud-native applications
+- Containerized deployments
+- CI/CD pipelines
+- Scalable software solutions
+- AI-powered applications
 
 Software engineering practices:
 
-* Clean Architecture
-* Domain-Driven Design
-* SOLID principles
-* Automated testing
-* Code reviews
-* Documentation
-* Continuous improvement
-* Reusable software components
+- Clean Architecture
+- Domain-Driven Design
+- SOLID principles
+- Automated testing
+- Code reviews
+- Documentation
+- Continuous improvement
+- Reusable software components
 
 ---
 
@@ -517,60 +517,60 @@ Software engineering practices:
 
 ## Programming Languages
 
-* C#
-* TypeScript
-* JavaScript
-* HTML
-* CSS / SCSS
+- C#
+- TypeScript
+- JavaScript
+- HTML
+- CSS / SCSS
 
 ## Backend Technologies
 
-* .NET
-* ASP.NET Core
-* REST APIs
-* Entity Framework Core
-* RabbitMQ
-* Background Services
+- .NET
+- ASP.NET Core
+- REST APIs
+- Entity Framework Core
+- RabbitMQ
+- Background Services
 
 ## Frontend Technologies
 
-* Angular
-* Angular Signals
-* NgRx
-* RxJS
-* Angular Material
+- Angular
+- Angular Signals
+- NgRx
+- RxJS
+- Angular Material
 
 ## Databases
 
-* Oracle Database
-* Microsoft SQL Server
-* Redis
+- Oracle Database
+- Microsoft SQL Server
+- Redis
 
 ## Cloud and DevOps
 
-* Microsoft Azure
-* Azure Functions
-* Azure AI Search
-* Azure OpenAI
-* Azure Container Apps
-* Azure API Management
-* Azure Key Vault
-* Azure DevOps
-* GitHub Actions
-* Docker
-* Kubernetes
-* K3S
-* Helm
-* TeamCity
-* Jenkins
+- Microsoft Azure
+- Azure Functions
+- Azure AI Search
+- Azure OpenAI
+- Azure Container Apps
+- Azure API Management
+- Azure Key Vault
+- Azure DevOps
+- GitHub Actions
+- Docker
+- Kubernetes
+- K3S
+- Helm
+- TeamCity
+- Jenkins
 
 ## Testing
 
-* xUnit
-* NUnit
-* Cypress
-* Postman
-* Locust
+- xUnit
+- NUnit
+- Cypress
+- Postman
+- Locust
 
 ---
 
@@ -586,8 +586,8 @@ Bachelor of Science in Electrical Engineering
 
 # Languages
 
-* Hungarian: Native
-* English: Professional working proficiency
+- Hungarian: Native
+- English: Professional working proficiency
 
 ---
 
@@ -597,15 +597,15 @@ Szilárd is interested in building modern software solutions using .NET, Angular
 
 His main interests are:
 
-* Cloud-native development
-* Software architecture
-* Distributed systems
-* Full-stack development
-* DevOps automation
-* Artificial intelligence integration
-* Scalable and maintainable software design
-* Developer productivity
-* End-to-end product ownership
+- Cloud-native development
+- Software architecture
+- Distributed systems
+- Full-stack development
+- DevOps automation
+- Artificial intelligence integration
+- Scalable and maintainable software design
+- Developer productivity
+- End-to-end product ownership
 
 He is particularly interested in roles where software engineers can take ownership of meaningful technical problems, contribute across the stack, participate in architectural decisions, and have an impact on the overall product rather than working only on narrowly defined tasks.
 
@@ -616,6 +616,8 @@ He is particularly interested in roles where software engineers can take ownersh
 A company should not hire Szilárd simply because he knows .NET, Angular, or Azure.
 
 His strongest differentiator is the combination of technical breadth, end-to-end ownership, practical engineering experience, and willingness to continuously improve.
+
+He is also keen to understand the business domain behind the software. He believes that working for a company is not only a technical exercise: software exists to support real business goals, users, decisions, and workflows. He takes the time to understand how the business operates, how people complete their work, where important decisions are made, and what constraints the organization faces. This helps him design solutions that are not only technically sound, but also useful and aligned with the way the business actually works.
 
 He is comfortable working across the full software lifecycle:
 
@@ -660,6 +662,8 @@ If asked "Why should we hire Szilárd?", a concise answer would be:
 "Because I don't want to be only the person who writes one part of an application. I like understanding the whole system and taking ownership from architecture and implementation through deployment and continuous improvement.
 
 My strongest area is .NET, but I have deliberately developed experience across frontend, backend, distributed systems, cloud, Kubernetes, DevOps, and AI. That allows me to look at problems from more than one perspective.
+
+I am also keen to understand the business domain and the workflows behind the software. I believe software engineering is not only about technology; it is about helping a business and its people work effectively. Understanding the domain helps me build solutions that solve the real problem rather than only implementing the visible technical requirement.
 
 I also put a lot of effort into understanding problems properly rather than just implementing the first solution that works. I enjoy improving systems, automating repetitive work, learning new technologies, and making software easier to maintain.
 
