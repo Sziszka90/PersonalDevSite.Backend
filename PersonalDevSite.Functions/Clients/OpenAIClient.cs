@@ -1,6 +1,7 @@
 using System;
 using System.ClientModel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -38,9 +39,10 @@ public class OpenAIClient : IOpenAIClient
       var relevantContext = await _contextSearchService.SearchRelevantContextAsync(conversation.Message, maxChunks: 5);
       var hasRelevantContext = !string.IsNullOrWhiteSpace(relevantContext)
         && await IsContextRelevantAsync(conversation.Message, relevantContext, cancellationToken);
+      var history = CreateHistoryContext(conversation.History);
       var prompt = hasRelevantContext
-        ? CreatePrompt(conversation.Message, relevantContext)
-        : CreateGeneralKnowledgePrompt(conversation.Message);
+        ? CreatePrompt(conversation.Message, relevantContext, history)
+        : CreateGeneralKnowledgePrompt(conversation.Message, history);
       _logger.LogInformation(
         hasRelevantContext
           ? "Using hybrid-search context for OpenAI model prompt"
@@ -89,9 +91,10 @@ public class OpenAIClient : IOpenAIClient
     var relevantContext = await _contextSearchService.SearchRelevantContextAsync(conversation.Message, maxChunks: 5);
     var hasRelevantContext = !string.IsNullOrWhiteSpace(relevantContext)
       && await IsContextRelevantAsync(conversation.Message, relevantContext, cancellationToken);
+    var history = CreateHistoryContext(conversation.History);
     var prompt = hasRelevantContext
-      ? CreatePrompt(conversation.Message, relevantContext)
-      : CreateGeneralKnowledgePrompt(conversation.Message);
+      ? CreatePrompt(conversation.Message, relevantContext, history)
+      : CreateGeneralKnowledgePrompt(conversation.Message, history);
     _logger.LogInformation(
       hasRelevantContext
         ? "Using hybrid-search context for streaming OpenAI model prompt"
@@ -165,7 +168,7 @@ public class OpenAIClient : IOpenAIClient
     }
   }
 
-  private static string CreatePrompt(string question, string relevantContext)
+  private static string CreatePrompt(string question, string relevantContext, string history)
   {
     return "You are a personal brand assistant for Szilard Ferencz. " +
       "Answer ONLY when the answer is supported by the knowledge-base context below. " +
@@ -175,15 +178,29 @@ public class OpenAIClient : IOpenAIClient
       "\" Answer questions about Szilard in 1-3 clear sentences and refer to him in the third person.\n\n" +
       "Knowledge-base context:\n\n" +
       relevantContext +
+      history +
       "\n\nUser question:\n" + question;
   }
 
-  private static string CreateGeneralKnowledgePrompt(string question)
+  private static string CreateGeneralKnowledgePrompt(string question, string history)
   {
     return "You are a helpful assistant for Szilard Ferencz. Answer the user's question directly in 1-3 clear sentences. " +
       "Use your general knowledge. When the question uses he, him, or his, interpret those pronouns as referring to Szilard and answer about him. " +
       "For questions about Szilard, only state facts you can support confidently; otherwise say you are unsure.\n\n" +
+      history +
       "User question:\n" + question;
+  }
+
+  private static string CreateHistoryContext(IEnumerable<Message> history)
+  {
+    var messages = history
+      .Where(message => !string.IsNullOrWhiteSpace(message.Role) && !string.IsNullOrWhiteSpace(message.Content))
+      .Select(message => $"{message.Role}:\n{message.Content}")
+      .ToList();
+
+    return messages.Count == 0
+      ? string.Empty
+      : "\n\nConversation history:\n\n" + string.Join("\n\n", messages) + "\n\n";
   }
 
   private static ResponsesClient CreateModelClient()
