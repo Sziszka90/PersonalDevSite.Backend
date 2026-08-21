@@ -3,6 +3,7 @@ using System.ClientModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -61,6 +62,7 @@ public class OpenAIClient : IOpenAIClient
         }
       };
 
+      LogPrompt(prompt, "Answer");
       var response = await _modelClient.CreateResponseAsync(options, cancellationToken);
 
       if (response?.Value is null)
@@ -71,11 +73,14 @@ public class OpenAIClient : IOpenAIClient
         };
       }
 
+      var answer = response.Value.GetOutputText();
+      LogAnswer(answer, "Answer");
+
       return new Result<ConversationDto>
       {
         Data = new ConversationDto
         {
-          Message = response.Value.GetOutputText()
+          Message = answer
         }
       };
     }
@@ -114,14 +119,19 @@ public class OpenAIClient : IOpenAIClient
       }
     };
 
+    LogPrompt(prompt, "Answer");
+    var answerBuilder = new StringBuilder();
     await foreach (var update in _modelClient.CreateResponseStreamingAsync(options, cancellationToken))
     {
       if (update is StreamingResponseOutputTextDeltaUpdate textUpdate
         && !string.IsNullOrEmpty(textUpdate.Delta))
       {
+        answerBuilder.Append(textUpdate.Delta);
         yield return textUpdate.Delta;
       }
     }
+
+    LogAnswer(answerBuilder.ToString(), "Answer");
   }
 
   private async Task<bool> IsContextRelevantAsync(
@@ -154,8 +164,10 @@ public class OpenAIClient : IOpenAIClient
         }
       };
 
+      LogPrompt(judgePrompt, "RelevanceJudge");
       var response = await _modelClient.CreateResponseAsync(options, cancellationToken);
       var decision = response?.Value?.GetOutputText()?.Trim();
+      LogAnswer(decision ?? string.Empty, "RelevanceJudge");
       var isRelevant = string.Equals(decision, "YES", StringComparison.OrdinalIgnoreCase);
 
       _logger.LogInformation("Relevance judge decision: {Decision}", isRelevant ? "YES" : "NO");
@@ -207,6 +219,22 @@ public class OpenAIClient : IOpenAIClient
     return messages.Count == 0
       ? string.Empty
       : "\n\nConversation history:\n\n" + string.Join("\n\n", messages) + "\n\n";
+  }
+
+  private void LogPrompt(string prompt, string promptType)
+  {
+    _logger.LogInformation(
+      "OpenAI prompt sent. PromptType: {PromptType}; Prompt: {Prompt}",
+      promptType,
+      prompt);
+  }
+
+  private void LogAnswer(string answer, string promptType)
+  {
+    _logger.LogInformation(
+      "OpenAI answer received. PromptType: {PromptType}; Answer: {Answer}",
+      promptType,
+      answer);
   }
 
   private static ResponsesClient CreateModelClient()

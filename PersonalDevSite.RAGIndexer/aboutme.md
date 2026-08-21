@@ -1,8 +1,8 @@
-# Szilárd Ferencz – Full Stack Software Engineer
+# Szilárd Ferencz – Senior Full Stack Software Engineer
 
-Szilárd Ferencz is a Full Stack Software Engineer currently based in Budapest, Hungary. He specializes in building scalable enterprise applications using .NET (C#), Angular, Azure, Kubernetes, and modern cloud-native technologies.
+Szilárd Ferencz is a Senior Full Stack Software Engineer currently based in Budapest, Hungary. He specializes in building scalable enterprise applications using .NET (C#), Angular, Azure, Kubernetes, and modern cloud-native technologies.
 
-He has experience designing and developing backend services, frontend applications, distributed systems, microservices architectures, CI/CD pipelines, and containerized deployments.
+His strongest professional area is .NET backend development, but he works across the full stack and has experience designing and developing backend services, frontend applications, distributed systems, microservices architectures, CI/CD pipelines, and containerized deployments. He actively uses AI-assisted development and modern AI services, including GitHub Copilot, to improve engineering productivity and explore practical solutions.
 
 His main technical focus areas include:
 
@@ -16,6 +16,8 @@ His main technical focus areas include:
 - Software architecture
 - Clean Architecture
 - Domain-Driven Design
+- CQRS and SOLID principles
+- Automated unit, integration, end-to-end, API, and load testing
 
 He enjoys working across the complete software lifecycle, including architecture design, implementation, testing, deployment, monitoring, and continuous improvement.
 
@@ -206,9 +208,11 @@ He has experience applying:
 
 - Clean Architecture
 - Domain-Driven Design
+- CQRS
 - SOLID principles
 - Microservice architecture
 - Event-driven architecture
+- Messaging with RabbitMQ
 - REST API design
 - Automated testing
 - CI/CD
@@ -242,15 +246,15 @@ He is particularly interested in the engineering challenges around AI applicatio
 
 # Professional Experience
 
-## Software Engineer – Capgemini Hungary Kft. / Morgan Stanley
+## Senior Software Engineer – Capgemini Hungary Kft. / Morgan Stanley
 
 **Jan 2026 – Present**
 
 **Budapest, Hungary**
 
-Szilárd works as a Software Engineer supporting Morgan Stanley's internal technology platforms.
+Szilárd works as a Senior Software Engineer in the firm's central .NET Platform Team, supporting Morgan Stanley's internal technology platforms.
 
-He develops and maintains a company-wide platform used across multiple teams, with a focus on scalability, reliability, and maintainability.
+He develops and maintains shared developer infrastructure, reusable libraries, internal tooling, and applications used across multiple teams. His work spans legacy .NET Framework 4.8 and modern .NET applications, with a focus on scalability, reliability, maintainability, and developer productivity.
 
 Responsibilities:
 
@@ -264,9 +268,18 @@ Responsibilities:
 - Supporting application modernization from legacy .NET Framework 4.8 solutions to modern .NET
 - Improving developer productivity through reusable frameworks and automation
 - Maintaining CI/CD workflows using TeamCity, Jenkins, and GitHub Actions
+- Contributing to FDC3 libraries for .NET applications, enabling interoperability and integration between financial desktop applications
 - Supporting .NET development teams through technical guidance and code quality improvements
 - Participating in software design discussions and architectural decisions
 - Developing and maintaining internal applications used across the organization
+
+Key accomplishments:
+
+- Redesigned the Shell library so embedded applications run in separate processes, improving application isolation and host-environment reliability
+- Supported the firm's migration from a legacy file-sharing-based system to Artifactory for application distribution and dependency management
+- Delivered internal training on Generative AI and GitHub Copilot to 20 software engineers, demonstrating practical AI-assisted development workflows
+
+FDC3 stands for Financial Desktop Connectivity and Collaboration Consortium. In this context, Szilárd contributes to libraries that support the FDC3 interoperability standard, allowing financial desktop applications to communicate and integrate more effectively.
 
 Technologies:
 
@@ -284,9 +297,13 @@ Technologies:
 
 ## Full Stack Software Engineer – Bosch Connected Industry
 
+**Jan 2021 – Dec 2025**
+
+**Hungary**
+
 Szilárd worked on enterprise manufacturing software platforms used in Bosch production environments.
 
-The systems consist of multiple distributed services running in containerized environments.
+The systems consist of multiple distributed services running in containerized environments and support automation, monitoring, and operational efficiency in factory production.
 
 The applications support:
 
@@ -298,11 +315,11 @@ The applications support:
 ### Backend Development
 
 - Developed scalable .NET Web APIs using Clean Architecture principles
-- Designed microservices-based solutions
+- Designed microservices-based solutions with a focus on high availability and fault-tolerant production environments
 - Implemented asynchronous communication using RabbitMQ
 - Applied Domain-Driven Design patterns
 - Improved database performance using Entity Framework Core, LINQ, and Oracle Database
-- Developed REST APIs and backend services
+- Developed REST APIs and backend services integrating with external systems
 
 ### Frontend Development
 
@@ -311,6 +328,7 @@ The applications support:
 - Used Angular Signals, NgRx, and RxJS
 - Built responsive user interfaces from Figma designs
 - Collaborated with UX designers to deliver maintainable UI solutions
+- Mentored developers and introduced modern Angular features such as Signals and NgRx
 
 ### Cloud and DevOps
 
@@ -329,6 +347,8 @@ Experience with:
 - End-to-end testing
 - API testing
 - Load testing
+
+Testing tools included xUnit, NUnit, Cypress, Postman, and Locust.
 
 Technologies:
 
@@ -350,14 +370,17 @@ Technologies:
 
 - Refactored legacy systems using Entity Framework Core and Domain-Driven Design
 - Developed configurable frameworks improving flexibility and maintainability
-- Improved software delivery processes through CI/CD optimization
+- Improved software delivery processes through Azure DevOps, Docker, and Kubernetes CI/CD optimization, reducing deployment runtime by 40%
 - Supported migration towards scalable microservice-based architectures
+- Improved project and system documentation with GitHub Copilot, reducing manual effort and improving consistency
 
 ---
 
 # Earlier Experience
 
-## PLC Application Engineer – Robert Bosch
+## PLC Programmer – Robert Bosch
+
+**Feb 2018 – Jan 2021**
 
 Before becoming a software engineer, Szilárd worked as an automation engineer developing PLC software for industrial machinery.
 
@@ -378,6 +401,8 @@ Key achievement:
 
 ## PLC Programmer – Agrometal-Food-Tech
 
+**Jun 2015 – Feb 2018**
+
 Responsibilities:
 
 - Developed machine control software from scratch
@@ -388,6 +413,8 @@ Responsibilities:
 ---
 
 ## Design Engineer – Baldwin UV Ltd. (United Kingdom)
+
+**May 2014 – May 2015**
 
 Responsibilities:
 
@@ -404,24 +431,30 @@ Responsibilities:
 
 Szilárd created a full-stack finance portfolio application demonstrating modern software architecture and AI integration.
 
+He designed the Angular frontend from scratch and developed the .NET backend using CQRS, Domain-Driven Design, Clean Architecture, and SOLID principles.
+
 Architecture:
 
 - Angular frontend
 - .NET backend
 - Azure services
 - RabbitMQ messaging
-- Azure OpenAI integration
+- Azure OpenAI and Azure AI Services integration
 - Containerized deployment
 
 Features:
 
 - User management
+- Secure authentication
 - Transaction management
 - CSV import
+- Spending analytics
 - Background processing
 - Exchange rate synchronization
 - AI-powered transaction categorization
 - Automated deployments
+
+The application uses a cloud-native microservices architecture with REST APIs, messaging, background processing, and caching. It is deployed using Azure Container Apps and Azure SQL, with Azure Key Vault for secrets management, Bicep for infrastructure as code, GitHub Actions for CI/CD, and automated testing.
 
 The project demonstrates experience with:
 
@@ -445,9 +478,12 @@ Architecture:
 - Angular frontend
 - Azure Functions backend
 - Azure OpenAI Responses API
+- Microsoft Foundry
 - Azure AI Search
 - Vector embeddings
 - Retrieval-Augmented Generation (RAG)
+
+Portfolio website: [szilardferencz.dev](https://szilardferencz.dev/) and [projects](https://szilardferencz.dev/#blog)
 
 The chatbot workflow:
 
@@ -480,6 +516,9 @@ AI technologies and concepts:
 - LLM-powered application workflows
 - Conversational AI
 - Context management
+- Generative AI and AI-assisted development
+- GitHub Copilot and Claude
+- Microsoft Foundry
 
 He is particularly interested in the engineering side of AI applications, including how LLMs can be integrated with existing backend systems, how relevant information can be retrieved, and how applications can maintain useful conversational context.
 
@@ -491,8 +530,10 @@ Szilárd has experience designing and implementing:
 
 - Full-stack applications
 - REST APIs
+- CQRS
 - Microservices architectures
 - Event-driven systems
+- Messaging and asynchronous processing
 - Distributed applications
 - Cloud-native applications
 - Containerized deployments
@@ -510,6 +551,7 @@ Software engineering practices:
 - Documentation
 - Continuous improvement
 - Reusable software components
+- Infrastructure as code with Bicep
 
 ---
 
@@ -528,6 +570,7 @@ Software engineering practices:
 - .NET
 - ASP.NET Core
 - REST APIs
+- CQRS
 - Entity Framework Core
 - RabbitMQ
 - Background Services
@@ -552,10 +595,14 @@ Software engineering practices:
 - Azure Functions
 - Azure AI Search
 - Azure OpenAI
+- Microsoft Foundry
+- Azure AI Services
 - Azure Container Apps
+- Azure SQL
 - Azure API Management
 - Azure Key Vault
 - Azure DevOps
+- Bicep
 - GitHub Actions
 - Docker
 - Kubernetes
