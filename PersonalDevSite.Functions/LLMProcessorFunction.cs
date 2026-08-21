@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Azure.Functions.Worker;
@@ -39,6 +40,7 @@ public class LLMProcessorFunction
     }
 
     var conversation = conversationResult.Data!;
+    _logger.LogInformation("Frontend chat request received. Prompt: {Prompt}", conversation.Message);
 
     if (AcceptsEventStream(req))
     {
@@ -51,6 +53,7 @@ public class LLMProcessorFunction
     {
       if (responseData.Data is not null)
       {
+        _logger.LogInformation("Frontend chat answer sent. Answer: {Answer}", responseData.Data.Message);
         return CreateResponse(req, responseData.Data, System.Net.HttpStatusCode.OK);
       }
       else
@@ -76,16 +79,19 @@ public class LLMProcessorFunction
     response.Headers.Add("Cache-Control", "no-cache");
     response.Headers.Add("X-Accel-Buffering", "no");
     AddCorsHeaders(response);
+    var answerBuilder = new StringBuilder();
 
     try
     {
       await foreach (var delta in _openAIClient.StreamAsync(conversation, cancellationToken))
       {
         await WriteSseEventAsync(response, "message", new { delta }, cancellationToken);
+        answerBuilder.Append(delta);
       }
 
       await response.WriteStringAsync("event: done\ndata: [DONE]\n\n", cancellationToken);
       await response.Body.FlushAsync(cancellationToken);
+      _logger?.LogInformation("Frontend chat answer sent. Answer: {Answer}", answerBuilder.ToString());
     }
     catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
     {
