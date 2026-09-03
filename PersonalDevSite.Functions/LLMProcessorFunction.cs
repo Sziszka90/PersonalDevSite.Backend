@@ -80,27 +80,51 @@ public class LLMProcessorFunction
     response.Headers.Add("X-Accel-Buffering", "no");
     AddCorsHeaders(response);
     var answerBuilder = new StringBuilder();
+    var streamOutcome = "started";
 
     try
     {
       await foreach (var delta in _openAIClient.StreamAsync(conversation, cancellationToken))
       {
-        await WriteSseEventAsync(response, "message", new { delta }, cancellationToken);
         answerBuilder.Append(delta);
+        await WriteSseEventAsync(response, "message", new { delta }, cancellationToken);
       }
 
       await response.WriteStringAsync("event: done\ndata: [DONE]\n\n", cancellationToken);
       await response.Body.FlushAsync(cancellationToken);
-      _logger?.LogInformation("Frontend chat answer sent. Answer: {Answer}", answerBuilder.ToString());
+      streamOutcome = "completed";
     }
     catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
     {
+      streamOutcome = "canceled";
       _logger?.LogInformation("Streaming OpenAI response was canceled by the client.");
     }
     catch (Exception ex)
     {
+      streamOutcome = "failed";
       _logger?.LogError(ex, "Streaming OpenAI request failed.");
       await WriteSseEventAsync(response, "error", new { error = "An error occurred while processing the OpenAI request." }, System.Threading.CancellationToken.None);
+    }
+    finally
+    {
+      var answer = answerBuilder.ToString();
+      var loggedAnswer = JsonSerializer.Serialize(answer);
+
+      if (streamOutcome == "completed")
+      {
+        _logger?.LogInformation(
+          "Frontend chat answer sent. AnswerLength: {AnswerLength}. Answer: {Answer}",
+          answer.Length,
+          loggedAnswer);
+      }
+      else
+      {
+        _logger?.LogInformation(
+          "Frontend chat stream ended. Outcome: {Outcome}. PartialAnswerLength: {AnswerLength}. Partial answer: {Answer}",
+          streamOutcome,
+          answer.Length,
+          loggedAnswer);
+      }
     }
 
     return response;
