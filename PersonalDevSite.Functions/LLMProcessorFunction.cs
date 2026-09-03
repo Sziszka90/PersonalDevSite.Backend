@@ -108,7 +108,12 @@ public class LLMProcessorFunction
     finally
     {
       var answer = answerBuilder.ToString();
-      var loggedAnswer = JsonSerializer.Serialize(answer);
+      var loggedAnswer = JsonSerializer.Serialize(
+        answer,
+        new JsonSerializerOptions
+        {
+          Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        });
 
       if (streamOutcome == "completed")
       {
