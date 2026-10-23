@@ -38,6 +38,5 @@ jobs:
         id: fa
         with:
           app-name: 'personaldevsite'
-          sku: flexconsumption
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_71F807B1E019440F83271A5063455AAC }}
