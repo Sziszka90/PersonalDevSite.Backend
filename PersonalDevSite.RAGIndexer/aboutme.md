@@ -1,12 +1,14 @@
 # Szilárd Ferencz – Senior Full Stack Software Engineer
 
-Szilárd Ferencz is a Senior Full Stack Software Engineer currently based in Budapest, Hungary. He specializes in building scalable enterprise applications using .NET (C#), Angular, Azure, Kubernetes, and modern cloud-native technologies.
+Szilárd Ferencz is a Senior Full Stack Software Engineer currently based in Budapest, Hungary. He specializes in building scalable enterprise applications using .NET (C#), Angular, Azure, Kubernetes, and modern cloud-native technologies. He also uses Python for scripting, backend services, and developer tooling, and has experience with FastAPI.
 
-His strongest professional area is .NET backend development, but he works across the full stack and has experience designing and developing backend services, frontend applications, distributed systems, microservices architectures, CI/CD pipelines, and containerized deployments. He actively uses AI-assisted development and modern AI services, including GitHub Copilot, to improve engineering productivity and explore practical solutions.
+His strongest professional area is .NET backend development, but he works across the full stack and has experience designing and developing backend services, frontend applications, distributed systems, microservices architectures, CI/CD pipelines, and containerized deployments. He uses Python to automate tasks, build services, and create tools that support development workflows. He also works with FastAPI to build Python APIs. He actively uses AI-assisted development and modern AI services, including GitHub Copilot, to improve engineering productivity and explore practical solutions.
 
 His main technical focus areas include:
 
 - .NET backend development
+- Python scripting, services, and tooling
+- FastAPI backend development
 - Angular frontend development
 - Cloud-native application development
 - Microservices architecture
@@ -183,6 +185,8 @@ His personal projects have allowed him to explore areas such as:
 
 - Modern .NET
 - Modern Angular
+- Python for scripting, services, and developer tooling
+- FastAPI for Python APIs
 - Azure
 - Cloud-native architecture
 - Kubernetes
@@ -560,6 +564,7 @@ Software engineering practices:
 ## Programming Languages
 
 - C#
+- Python
 - TypeScript
 - JavaScript
 - HTML
@@ -569,6 +574,7 @@ Software engineering practices:
 
 - .NET
 - ASP.NET Core
+- FastAPI
 - REST APIs
 - CQRS
 - Entity Framework Core
