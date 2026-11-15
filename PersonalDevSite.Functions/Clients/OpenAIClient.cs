@@ -43,10 +43,10 @@ public class OpenAIClient : IOpenAIClient
       var relevantContext = await _contextSearchService.SearchRelevantContextAsync(conversation.Message, maxChunks: 5);
       var hasRelevantContext = !string.IsNullOrWhiteSpace(relevantContext)
         && await IsContextRelevantAsync(conversation.Message, relevantContext, cancellationToken);
-      var history = CreateHistoryContext(conversation.History);
+      var instructions = CreateInstructions(hasRelevantContext);
       var prompt = hasRelevantContext
-        ? CreatePrompt(conversation.Message, relevantContext, history)
-        : CreateGeneralKnowledgePrompt(conversation.Message, history);
+        ? CreatePrompt(conversation.Message, relevantContext)
+        : conversation.Message;
       _logger.LogInformation(
         hasRelevantContext
           ? "Using hybrid-search context for OpenAI model prompt"
@@ -55,6 +55,9 @@ public class OpenAIClient : IOpenAIClient
       var options = new CreateResponseOptions
       {
         Model = EnvironmentConfiguration.GetRequired("AZURE_OPENAI_MODEL_NAME"),
+        Instructions = instructions,
+        PreviousResponseId = conversation.PreviousResponseId,
+        StoredOutputEnabled = true,
         InputItems =
         {
           ResponseItem.CreateUserMessageItem(prompt)
@@ -75,7 +78,8 @@ public class OpenAIClient : IOpenAIClient
       {
         Data = new ConversationDto
         {
-          Message = response.Value.GetOutputText()
+          Message = response.Value.GetOutputText(),
+          ResponseId = response.Value.Id
         }
       };
     }
@@ -90,15 +94,16 @@ public class OpenAIClient : IOpenAIClient
 
   public async IAsyncEnumerable<string> StreamAsync(
     ConversationDto conversation,
+    Action<string>? onResponseId = null,
     [EnumeratorCancellation] CancellationToken cancellationToken = default)
   {
     var relevantContext = await _contextSearchService.SearchRelevantContextAsync(conversation.Message, maxChunks: 5);
     var hasRelevantContext = !string.IsNullOrWhiteSpace(relevantContext)
       && await IsContextRelevantAsync(conversation.Message, relevantContext, cancellationToken);
-    var history = CreateHistoryContext(conversation.History);
+    var instructions = CreateInstructions(hasRelevantContext);
     var prompt = hasRelevantContext
-      ? CreatePrompt(conversation.Message, relevantContext, history)
-      : CreateGeneralKnowledgePrompt(conversation.Message, history);
+      ? CreatePrompt(conversation.Message, relevantContext)
+      : conversation.Message;
     _logger.LogInformation(
       hasRelevantContext
         ? "Using hybrid-search context for streaming OpenAI model prompt"
@@ -107,6 +112,9 @@ public class OpenAIClient : IOpenAIClient
     var options = new CreateResponseOptions
     {
       Model = EnvironmentConfiguration.GetRequired("AZURE_OPENAI_MODEL_NAME"),
+      Instructions = instructions,
+      PreviousResponseId = conversation.PreviousResponseId,
+      StoredOutputEnabled = true,
       StreamingEnabled = true,
       InputItems =
       {
@@ -120,6 +128,12 @@ public class OpenAIClient : IOpenAIClient
         && !string.IsNullOrEmpty(textUpdate.Delta))
       {
         yield return textUpdate.Delta;
+      }
+
+      if (update is StreamingResponseCompletedUpdate completedUpdate
+        && !string.IsNullOrWhiteSpace(completedUpdate.Response?.Id))
+      {
+        onResponseId?.Invoke(completedUpdate.Response.Id);
       }
     }
   }
@@ -172,41 +186,23 @@ public class OpenAIClient : IOpenAIClient
     }
   }
 
-  private static string CreatePrompt(string question, string relevantContext, string history)
+  private static string CreateInstructions(bool hasRelevantContext)
   {
-    return USER_IDENTITY_BOUNDARY +
-      "You are a personal brand assistant for Szilard Ferencz. " +
-      "Answer ONLY when the answer is supported by the knowledge-base context below. " +
-      "Do not use general knowledge, assumptions, or information outside the context. " +
-      "If the context does not contain enough information to answer the question, respond exactly with: \"" +
-      NO_KNOWLEDGE_BASE_ANSWER +
-      "\" Answer questions about Szilard in 1-3 clear sentences and refer to him in the third person.\n\n" +
-      "Knowledge-base context:\n\n" +
-      relevantContext +
-      history +
-      "\n\nUser question:\n" + question;
+    return USER_IDENTITY_BOUNDARY + (hasRelevantContext
+      ? "You are a personal brand assistant for Szilard Ferencz. " +
+        "Answer ONLY when the answer is supported by the knowledge-base context supplied in the latest user message. " +
+        "Do not use general knowledge, assumptions, or information outside the context. " +
+        "If the context does not contain enough information to answer the question, respond exactly with: \"" +
+        NO_KNOWLEDGE_BASE_ANSWER +
+        "\" Answer questions about Szilard in 1-3 clear sentences and refer to him in the third person."
+      : "You are a helpful assistant for Szilard Ferencz. Answer the user's question directly in 1-3 clear sentences. " +
+        "Use your general knowledge. When the question uses he, him, or his, interpret those pronouns as referring to Szilard and answer about him. " +
+        "For questions about Szilard, only state facts you can support confidently; otherwise say you are unsure.");
   }
 
-  private static string CreateGeneralKnowledgePrompt(string question, string history)
+  private static string CreatePrompt(string question, string relevantContext)
   {
-    return USER_IDENTITY_BOUNDARY +
-      "You are a helpful assistant for Szilard Ferencz. Answer the user's question directly in 1-3 clear sentences. " +
-      "Use your general knowledge. When the question uses he, him, or his, interpret those pronouns as referring to Szilard and answer about him. " +
-      "For questions about Szilard, only state facts you can support confidently; otherwise say you are unsure.\n\n" +
-      history +
-      "User question:\n" + question;
-  }
-
-  private static string CreateHistoryContext(IEnumerable<Message> history)
-  {
-    var messages = history
-      .Where(message => !string.IsNullOrWhiteSpace(message.Role) && !string.IsNullOrWhiteSpace(message.Content))
-      .Select(message => $"{message.Role}:\n{message.Content}")
-      .ToList();
-
-    return messages.Count == 0
-      ? string.Empty
-      : "\n\nConversation history:\n\n" + string.Join("\n\n", messages) + "\n\n";
+    return "Knowledge-base context:\n\n" + relevantContext + "\n\nUser question:\n" + question;
   }
 
   private static ResponsesClient CreateModelClient()

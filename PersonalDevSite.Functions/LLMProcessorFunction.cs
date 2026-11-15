@@ -81,13 +81,19 @@ public class LLMProcessorFunction
     AddCorsHeaders(response);
     var answerBuilder = new StringBuilder();
     var streamOutcome = "started";
+    string? responseId = null;
 
     try
     {
-      await foreach (var delta in _openAIClient.StreamAsync(conversation, cancellationToken))
+      await foreach (var delta in _openAIClient.StreamAsync(conversation, id => responseId = id, cancellationToken))
       {
         answerBuilder.Append(delta);
         await WriteSseEventAsync(response, "message", new { delta }, cancellationToken);
+      }
+
+      if (!string.IsNullOrWhiteSpace(responseId))
+      {
+        await WriteSseEventAsync(response, "response_id", new { responseId }, cancellationToken);
       }
 
       await response.WriteStringAsync("event: done\ndata: [DONE]\n\n", cancellationToken);

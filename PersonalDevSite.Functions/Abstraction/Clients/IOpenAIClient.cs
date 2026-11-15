@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,5 +10,8 @@ namespace PersonalDevSite.Functions.Abstraction.Clients;
 public interface IOpenAIClient
 {
   Task<Result<ConversationDto>> PostAsync(ConversationDto conversation, CancellationToken cancellationToken = default);
-  IAsyncEnumerable<string> StreamAsync(ConversationDto conversation, CancellationToken cancellationToken = default);
+  IAsyncEnumerable<string> StreamAsync(
+    ConversationDto conversation,
+    Action<string>? onResponseId = null,
+    CancellationToken cancellationToken = default);
 }
