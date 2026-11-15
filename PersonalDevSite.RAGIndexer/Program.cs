@@ -14,19 +14,39 @@ var indexName = GetRequiredSetting("AZURE_SEARCH_INDEX_NAME", settings);
 
 var summaryPath = args.Length > 0
   ? Path.GetFullPath(args[0])
-  : Path.Combine(AppContext.BaseDirectory, "aboutme.md");
+  : Path.Combine(AppContext.BaseDirectory, "ABOUTME.md");
 
 if (!File.Exists(summaryPath))
 {
   throw new FileNotFoundException("The summary file could not be found.", summaryPath);
 }
 
-var content = await File.ReadAllTextAsync(summaryPath);
-var chunks = ChunkContent(content);
+var sources = new List<(string Name, string Url, string Content)>
+{
+  ("Personal profile", "", await File.ReadAllTextAsync(summaryPath))
+};
+
+var readmeUrls = GetSetting("RAG_GITHUB_README_URLS", settings)?
+  .Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries) ?? [];
+
+using var httpClient = new HttpClient();
+foreach (var url in readmeUrls)
+{
+  var uri = new Uri(url);
+  var content = await httpClient.GetStringAsync(uri);
+  var repositoryName = uri.Segments.Length >= 3 ? uri.Segments[2].TrimEnd('/') : uri.Host;
+  sources.Add(($"{repositoryName} README", url, content));
+  Console.WriteLine($"Fetched {repositoryName} README.");
+}
+
+var chunks = sources
+  .SelectMany(source => ChunkContent(source.Content)
+    .Select((content, index) => (source.Name, source.Url, Index: index, Content: AddSourceContext(content, source.Name, source.Url))))
+  .ToList();
 
 if (chunks.Count == 0)
 {
-  throw new InvalidOperationException("The summary file does not contain any text to index.");
+  throw new InvalidOperationException("The configured RAG sources do not contain any text to index.");
 }
 
 var embeddingClient = CreateEmbeddingClient(openAiEndpoint, embeddingDeployment, settings);
@@ -40,11 +60,11 @@ var documents = new List<SearchDocument>(chunks.Count);
 
 for (var index = 0; index < chunks.Count; index++)
 {
-  var embedding = await embeddingClient.GenerateEmbeddingAsync(chunks[index]);
+  var embedding = await embeddingClient.GenerateEmbeddingAsync(chunks[index].Content);
   documents.Add(new SearchDocument
   {
     ["id"] = $"chunk-{index:D4}",
-    ["content"] = chunks[index],
+    ["content"] = chunks[index].Content,
     ["embedding"] = embedding.Value.ToFloats().ToArray()
   });
 }
@@ -160,6 +180,12 @@ static List<string> ChunkContent(string content)
       ? overlap + " " + unit
       : unit;
   }
+}
+
+static string AddSourceContext(string content, string sourceName, string sourceUrl)
+{
+  var source = string.IsNullOrWhiteSpace(sourceUrl) ? sourceName : $"{sourceName} ({sourceUrl})";
+  return $"Source: {source}{Environment.NewLine}{Environment.NewLine}{content}";
 }
 
 static Dictionary<string, string?> LoadSettings()
